@@ -24,12 +24,12 @@ import java.util.Map;
 @ServiceConfig(
         actionName = ActionNames.CUSTOMER_LOGOUT,
         requestConfigs = {
-    @RequestConfig(name = "serviceId", typeEnum = TypeEnum.CHAR_32, desc = "客服id,-1代表还未分配客服"),
+    @RequestConfig(name = "receptionId", typeEnum = TypeEnum.CHAR_32, desc = "客服id,-1代表还未分配客服"),
     @RequestConfig(name = "waitOrder", must = false, typeEnum = TypeEnum.LONG, desc = "客户排队序号")
 },
         responseConfigs = {
     @ResponseConfig(name = "customerId", typeEnum = TypeEnum.CHAR_32, desc = "客户id"),
-    @ResponseConfig(name = "serviceId", typeEnum = TypeEnum.CHAR_32, desc = "客服id"),
+    @ResponseConfig(name = "receptionId", typeEnum = TypeEnum.CHAR_32, desc = "客服id"),
     @ResponseConfig(name = "waitOrder", typeEnum = TypeEnum.LONG, desc = "客户排队序号")
 },
         validateSession = true,
@@ -45,16 +45,16 @@ public class CustomerLogoutServiceImpl implements Service {
     @Override
     public void execute(MessageContext messageContext) {
         String sid = messageContext.getSession().getSid();
-        String customerId = SessionUtils.getCustomerUserIdFromSessionId(sid);
+        String customerId = SessionUtils.getCustomerIdFromSessionId(sid);
         messageContext.setNewSession(null);
-        String serviceId = messageContext.getParameter("serviceId");
+        String receptionId = messageContext.getParameter("receptionId");
         Map<String, String> resultMap = new HashMap<String, String>(2, 1);
         resultMap.put("customerId", customerId);
-        resultMap.put("serviceId", serviceId);
+        resultMap.put("receptionId", receptionId);
         resultMap.put("waitOrder", "-1");
         messageContext.setMapData(resultMap);
         messageContext.success();
-        if (serviceId.equals("-1") == true) {
+        if (receptionId.equals("-1") == true) {
             //还未分配客服
             //判断是否在等待队列
             String waitOrder = messageContext.getParameter("waitOrder");
@@ -74,7 +74,7 @@ public class CustomerLogoutServiceImpl implements Service {
             }
         } else {
             //通知客服，当前客户退出
-            String serviceSid = SessionUtils.createServiceSessionId(serviceId);
+            String serviceSid = SessionUtils.createReceptionSessionId(receptionId);
             String message = messageContext.getResponseMessage();
             messageContext.push(serviceSid, message);
         }

@@ -19,16 +19,16 @@ import java.util.Map;
  * @author aladdin
  */
 @ServiceConfig(
-        actionName = ActionNames.SEND_MESSAGE_FROM_CUSTOMER,
+        actionName = ActionNames.SEND_MESSAGE_FROM_RECEPTION,
         requestConfigs = {
-    @RequestConfig(name = "receptionId", typeEnum = TypeEnum.CHAR_32, desc = "客服id"),
+    @RequestConfig(name = "customerId", typeEnum = TypeEnum.CHAR_32, desc = "客户id"),
     @RequestConfig(name = "message", typeEnum = TypeEnum.CHAR_255, desc = "消息")
 },
         responseConfigs = {
     @ResponseConfig(name = "messageId", typeEnum = TypeEnum.CHAR_32, desc = "消息id"),
     @ResponseConfig(name = "customerId", typeEnum = TypeEnum.CHAR_32, desc = "客户id"),
     @ResponseConfig(name = "receptionId", typeEnum = TypeEnum.CHAR_32, desc = "客服id"),
-    @ResponseConfig(name = "message", typeEnum = TypeEnum.CHAR_32, desc = "消息"),
+    @ResponseConfig(name = "message", typeEnum = TypeEnum.CHAR_32, desc = "消息主体,文字类型为字符,图片和文件类型为路径"),
     @ResponseConfig(name = "from", typeEnum = TypeEnum.CHAR_32, desc = "发起人,c:客户,s:客服"),
     @ResponseConfig(name = "type", typeEnum = TypeEnum.CHAR_32, desc = "类型:text-文字,image-图片,file-文件"),
     @ResponseConfig(name = "createTime", typeEnum = TypeEnum.DATE_TIME, desc = "发送时间")
@@ -37,7 +37,7 @@ import java.util.Map;
         response = true,
         group = ActionGroupNames.MESSAGE,
         description = "客户发送消息至客服")
-public class SendMessageFromCustomerServiceImpl implements Service {
+public class SendMessageFromReceptionServiceImpl implements Service {
 
     //
     @InjectLocalService()
@@ -47,16 +47,15 @@ public class SendMessageFromCustomerServiceImpl implements Service {
     public void execute(MessageContext messageContext) {
         Map<String, String> parameterMap = messageContext.getParameterMap();
         String sid = messageContext.getSession().getSid();
-        String customerId = SessionUtils.getCustomerIdFromSessionId(sid);
-        String receptionId = parameterMap.get("receptionId");
+        String receptionId = SessionUtils.getReceptionIdFromSessionId(sid);
+        String customerId = parameterMap.get("customerId");
         String message = parameterMap.get("message");
-        MessageEntity messageEntity = this.messageLocalService.insertTextMessageFormCustomer(receptionId, customerId, message);
+        MessageEntity messageEntity = this.messageLocalService.insertTextMessageFormReception(receptionId, customerId, message);
         messageContext.setEntityData(messageEntity);
-        String serviceSid = SessionUtils.createReceptionSessionId(receptionId);
+        String customerSid = SessionUtils.createCustomerSessionId(customerId);
         messageContext.success();
         //
         String responseMessage = messageContext.getResponseMessage();
-        messageContext.push(serviceSid, responseMessage);
-        
+        messageContext.push(customerSid, responseMessage);
     }
 }

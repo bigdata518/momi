@@ -21,16 +21,6 @@ define(function(require) {
                     var infoId = thisModule.findChildByKey('info-id');
                     infoId.setLabel('帐号不能为空');
                 }
-            },
-            password: {
-                success: function() {
-                    var infoPassword = thisModule.findChildByKey('info-password');
-                    infoPassword.setLabel('');
-                },
-                faliure: function() {
-                    var infoPassword = thisModule.findChildByKey('info-password');
-                    infoPassword.setLabel('密码不能为空');
-                }
             }
         };
         var loginButton = thisModule.findChildByKey('login-button');
@@ -40,27 +30,24 @@ define(function(require) {
             //必填检测
             var validate = _utils.validate(msg, loginValidate);
             if (validate) {
-                msg.act = 'ADMIN_LOGIN';
-                msg.password = CryptoJS.MD5(msg.password).toString();
+                msg.act = 'RECEPTION_LOGIN';
                 _message.send(msg);
-                loginForm.setData('password', '');
             }
         });
         //
-        _message.listen(loginButton, 'ADMIN_LOGIN', function(thisCom, msg) {
+        _message.listen(loginButton, 'RECEPTION_LOGIN', function(thisCom, msg) {
             if (msg.flag === 'SUCCESS') {
                 //登录成功
+                _yy.setSession(msg.data);
                 thisModule.hide();
                 thisModule.remove();
-                _module.loadModule('', 'admin-home');
+                _module.loadModule('', 'reception-home');
             } else {
                 //登录失败
                 var infoLogin = thisModule.findChildByKey('info-login');
-                var info ="登录失败";
-                if(msg.flag === 'FAILURE_USER_ID_NOT_EXIST') {
-                    info = "用户不存在";
-                } else if (msg.flag === 'FAILURE_PASSWORD_ERROR') {
-                    info = "密码错误";
+                var info ='登录失败';
+                if(msg.flag === 'FAILURE_ID_NOT_EXIST') {
+                    info = '用户不存在';
                 }
                 infoLogin.setLabel(info);
             }

@@ -16,15 +16,15 @@ public class ActionNames {
     //管理员登录
     public final static String ADMIN_LOGIN = "ADMIN_LOGIN";
     //普通用户登录
-    public final static String SERVICE_LOGIN = "SERVICE_LOGIN";
+    public final static String RECEPTION_LOGIN = "RECEPTION_LOGIN";
     //登出
-    public final static String SERVICE_LOGOUT = "SERVICE_LOGOUT";
+    public final static String RECEPTION_LOGOUT = "RECEPTION_LOGOUT";
     //新增客服用户
-    public final static String INSERT_SERVICE = "INSERT_SERVICE";
+    public final static String INSERT_RECEPTION = "INSERT_RECEPTION";
     //查询客服用户
-    public final static String INQUIRE_SERVICE = "INQUIRE_SERVICE";
+    public final static String INQUIRE_RECEPTION = "INQUIRE_RECEPTION";
     //删除客服用户
-    public final static String DELETE_SERVICE = "DELETE_SERVICE";
+    public final static String DELETE_RECEPTION = "DELETE_RECEPTION";
     //分配等待队列中的客户给客服
     public final static String ALLOT_WAIT_CUSTOMER = "ALLOT_WAIT_CUSTOMER";
     //----------------------------客户接口---------------------------//
@@ -40,5 +40,5 @@ public class ActionNames {
     //客户发送消息至客服
     public final static String SEND_MESSAGE_FROM_CUSTOMER = "SEND_MESSAGE_FROM_CUSTOMER";
     //客服发送消息至客户
-    public final static String SEND_MESSAGE_FROM_SERVICE = "SEND_MESSAGE_FROM_SERVICE";
+    public final static String SEND_MESSAGE_FROM_RECEPTION = "SEND_MESSAGE_FROM_RECEPTION";
 }

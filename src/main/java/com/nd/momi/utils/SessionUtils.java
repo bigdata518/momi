@@ -6,24 +6,24 @@ package com.nd.momi.utils;
  */
 public class SessionUtils {
 
-    private final static String SERVICE_PREFIX = "s_";
+    private final static String RECEPTION_PREFIX = "s_";
     private final static String CUSTOMER_PREFIX = "c_";
 
-    public static String createServiceSessionId(String userId) {
-        return SERVICE_PREFIX.concat(userId);
+    public static String createReceptionSessionId(String userId) {
+        return RECEPTION_PREFIX.concat(userId);
     }
 
-    public static String getServiceUserIdFromSessionId(String sid) {
+    public static String getReceptionIdFromSessionId(String sid) {
         String userId = "-1";
-        int index = sid.indexOf(SERVICE_PREFIX);
+        int index = sid.indexOf(RECEPTION_PREFIX);
         if (index == 0) {
-            userId = sid.substring(index + SERVICE_PREFIX.length());
+            userId = sid.substring(index + RECEPTION_PREFIX.length());
         }
         return userId;
     }
 
-    public static boolean isServiceSession(String sid) {
-        int index = sid.indexOf(SERVICE_PREFIX);
+    public static boolean isReceptionSession(String sid) {
+        int index = sid.indexOf(RECEPTION_PREFIX);
         return index == 0;
     }
 
@@ -31,7 +31,7 @@ public class SessionUtils {
         return CUSTOMER_PREFIX.concat(userId);
     }
 
-    public static String getCustomerUserIdFromSessionId(String sid) {
+    public static String getCustomerIdFromSessionId(String sid) {
         String userId = "-1";
         int index = sid.indexOf(CUSTOMER_PREFIX);
         if (index == 0) {

@@ -58,7 +58,7 @@ public class MessageLocalServiceImpl implements MessageLocalService {
     }
 
     @Override
-    public MessageEntity insertTextMessageFormService(String serviceId, String customerId, String message) {
+    public MessageEntity insertTextMessageFormReception(String serviceId, String customerId, String message) {
         Map<String, String> entityMap = new HashMap<String, String>(8, 1);
         final long messageId = this.nextMessageId();
         final String from = "s";

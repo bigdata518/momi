@@ -37,8 +37,8 @@ public abstract class AbstractMomiTest {
         ApplicationContext.CONTEXT.contextDestroyed();
     }
 
-    public final void setServiceSession(String userId) {
-        String sid = SessionUtils.createServiceSessionId(userId);
+    public final void setReceptionSession(String userId) {
+        String sid = SessionUtils.createReceptionSessionId(userId);
         Session session = new SessionImpl(sid);
         this.testHandler.setSession(session);
     }

@@ -88,12 +88,12 @@ define(function(require) {
                     var customerInfo = thisModule.findChildByKey('customer-info');
                     customerInfo.setLabel(data.customerName);
                     var charForm = thisModule.findChildByKey('chat-form');
-                    charForm.setData('serviceId', data.serviceId);
+                    charForm.setData('receptionId', data.receptionId);
                     //添加欢迎消息
                     var message = {
                         messageId: 1,
-                        message: '工号:' + data.serviceId + ' ' + data.serviceName + '为您服务！有什么可以帮助您?',
-                        serviceId: data.serviceId,
+                        message: '工号:' + data.receptionId + ' ' + data.receptionName + '为您服务！有什么可以帮助您?',
+                        receptionId: data.receptionId,
                         customerId: data.customerId,
                         type: 'text',
                         from: 's',
@@ -124,7 +124,7 @@ define(function(require) {
             }
         });
         //
-        _message.listen(chatMessageList, 'SEND_MESSAGE_FROM_SERVICE', function(thisCom, msg) {
+        _message.listen(chatMessageList, 'SEND_MESSAGE_FROM_RECEPTION', function(thisCom, msg) {
             if (msg.flag === 'SUCCESS') {
                 var data = msg.data;
                 thisCom.addItemData(data);

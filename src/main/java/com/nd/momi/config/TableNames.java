@@ -10,11 +10,11 @@ public class TableNames {
     public final static String KEY = "KEY";
     public final static int KEY_INDEX = 1;
     //客服用户
-    public final static String SERVICE = "SERVICE";
-    public final static int SERVICE_INDEX = 2;
-    //在线客服表
-    public final static String SERVICE_STATE = "SERVICE_STATE";
-    public final static int SERVICE_STATE_INDEX = 3;
+    public final static String RECEPTION = "RECEPTION";
+    public final static int RECEPTION_INDEX = 2;
+    //客服状态表
+    public final static String RECEPTION_STATE = "RECEPTION_STATE";
+    public final static int RECEPTION_STATE_INDEX = 3;
     //客户用户表
     public final static String CUSTOMER = "CUSTOMER";
     public final static int CUSTOMER_INDEX = 4;

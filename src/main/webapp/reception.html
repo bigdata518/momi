@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="renderer" content="webkit|ie-comp|ie-stand">
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <title>im-admin</title>
+        <title>im-客服</title>
         <script src="./libs/require/require.js"></script>
     </head>
     <body class="global_background">
@@ -29,19 +29,14 @@
                         main: 'yy'
                     },
                     {
-                        name: 'admin-login',
-                        location: './module/admin-login',
-                        main: 'admin-login'
+                        name: 'reception-login',
+                        location: './module/reception-login',
+                        main: 'reception-login'
                     },
                     {
-                        name: 'admin-home',
-                        location: './module/admin-home',
-                        main: 'admin-home'
-                    },
-                    {
-                        name: 'reception-manage',
-                        location: './module/reception-manage',
-                        main: 'reception-manage'
+                        name: 'reception-home',
+                        location: './module/reception-home',
+                        main: 'reception-home'
                     }
                 ],
                 paths: {
@@ -70,7 +65,7 @@
                             var link = document.createElement("link");
                             link.type = "text/css";
                             link.rel = "stylesheet";
-                            link.href = '../libs/jquery/datepicker/stylesheets/jquery-ui-1.10.3.datepicker.css';
+                            link.href = './libs/jquery/datepicker/stylesheets/jquery-ui-1.10.3.datepicker.css';
                             document.getElementsByTagName("head")[0].appendChild(link);
                         }
                     }
@@ -91,7 +86,7 @@
                 yyLink.href = './libs/yy/stylesheets/yy.css' + '?v=' + v;
                 document.getElementsByTagName("head")[0].appendChild(yyLink);
                 //加载模块
-                module.loadModule('', 'admin-login', function() {
+                module.loadModule('', 'reception-login', function() {
                 });
                 yy.setConfig({
                     httpServer: 'http://192.168.19.137:9090/momi/service.io',

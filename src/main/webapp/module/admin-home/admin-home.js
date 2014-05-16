@@ -8,22 +8,22 @@ define(function(require) {
     var _message = _yy.getMessage();
     self.init = function(thisModule) {
         //默认加载userPanel
-        var serviceManagePanel = thisModule.findChildByKey('service-manage-panel');
-        var toServiceManageButton = thisModule.findChildByKey('to-service-manage-button');
+        var receptionManagePanel = thisModule.findChildByKey('reception-manage-panel');
+        var toReceptionManageButton = thisModule.findChildByKey('to-reception-manage-button');
         //导航集合
         var navs = [
             {
-                panel: serviceManagePanel,
-                btn: toServiceManageButton,
-                module: 'service-manage'
+                panel: receptionManagePanel,
+                btn: toReceptionManageButton,
+                module: 'reception-manage'
             }
         ];
         //默认页面
-        module.loadModule(serviceManagePanel.id, 'service-manage', function() {
+        module.loadModule(receptionManagePanel.id, 'reception-manage', function() {
         });
         thisModule.setContext({
-            visiblePanel: serviceManagePanel,
-            visibleButton: toServiceManageButton
+            visiblePanel: receptionManagePanel,
+            visibleButton: toReceptionManageButton
         });
         //绑定导航按钮事件
         var panel;

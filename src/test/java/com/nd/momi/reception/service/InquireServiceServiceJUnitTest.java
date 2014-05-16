@@ -1,4 +1,4 @@
-package com.nd.momi.message.service;
+package com.nd.momi.reception.service;
 
 import com.nd.momi.AbstractMomiTest;
 import com.nd.momi.config.ActionNames;
@@ -12,9 +12,9 @@ import org.junit.Test;
  *
  * @author aladdin
  */
-public class SendMessageFromCustomerJUnitTest extends AbstractMomiTest {
+public class InquireServiceServiceJUnitTest extends AbstractMomiTest {
 
-    public SendMessageFromCustomerJUnitTest() {
+    public InquireServiceServiceJUnitTest() {
     }
 
     @Before
@@ -28,11 +28,9 @@ public class SendMessageFromCustomerJUnitTest extends AbstractMomiTest {
 
     @Test
     public void test() {
-        this.setCustomerSession("1158174740");
+        this.setReceptionSession("10000");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("receptionId", "271411");
-        parameterMap.put("message", "hello 271411");
-        String result = this.testHandler.execute(ActionNames.SEND_MESSAGE_FROM_CUSTOMER, parameterMap);
+        String result = this.testHandler.execute(ActionNames.INQUIRE_RECEPTION, parameterMap);
         System.out.println(result);
     }
 }

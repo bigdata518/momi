@@ -1,7 +1,7 @@
 package com.nd.momi.leave;
 
 import com.nd.momi.customer.localservice.CustomerLocalService;
-import com.nd.momi.service.localservice.ServiceLocalService;
+import com.nd.momi.reception.localservice.ReceptionLocalService;
 import com.nd.momi.utils.SessionUtils;
 import com.wolf.framework.comet.CometContext;
 import com.wolf.framework.comet.LeaveEventConfig;
@@ -17,7 +17,7 @@ import com.wolf.framework.session.Session;
 public class LogoutLeaveEventHandlerImpl implements LeaveEventHandler {
 
     @InjectLocalService()
-    private ServiceLocalService serviceUserLocalService;
+    private ReceptionLocalService receptionLocalService;
     //
     @InjectLocalService()
     private CustomerLocalService customerLocalService;
@@ -25,13 +25,13 @@ public class LogoutLeaveEventHandlerImpl implements LeaveEventHandler {
     @Override
     public void execute(Session session, CometContext cometContext) {
         String sid = session.getSid();
-        if(SessionUtils.isServiceSession(sid)) {
+        if(SessionUtils.isReceptionSession(sid)) {
             //客服登出
-            String serviceId = SessionUtils.getServiceUserIdFromSessionId(sid);
-            this.serviceUserLocalService.offService(serviceId, "登出");
+            String receptionId = SessionUtils.getReceptionIdFromSessionId(sid);
+            this.receptionLocalService.offService(receptionId, "登出");
         } else {
             //客户登出
-            String customerId = SessionUtils.getCustomerUserIdFromSessionId(sid);
+            String customerId = SessionUtils.getCustomerIdFromSessionId(sid);
             this.customerLocalService.deleteCustomerWait(customerId);
         }
 //        cometContext.push("271411", "{\"flag\":\"SUCCESS\",\"act\":\"CUSTOMER_LOGOUT\",\"data\":{\"userId\":\"" + session.getSid() + "\",\"serviceId\":\"271411\"}}");

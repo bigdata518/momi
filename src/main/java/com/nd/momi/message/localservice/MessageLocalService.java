@@ -10,9 +10,9 @@ import java.util.List;
  */
 public interface MessageLocalService extends Local {
 
-    public MessageEntity insertTextMessageFormCustomer(String serviceId, String customerId, String message);
+    public MessageEntity insertTextMessageFormCustomer(String receptionId, String customerId, String message);
 
-    public MessageEntity insertTextMessageFormService(String serviceId, String customerId, String message);
+    public MessageEntity insertTextMessageFormReception(String receptionId, String customerId, String message);
 
     public List<MessageEntity> inquireMessageByCustomerDESC(String customerId, long pageIndex, long pageSize);
 }

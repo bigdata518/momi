@@ -1,7 +1,9 @@
-package com.nd.momi.message.service;
+package com.nd.momi.reception.service;
 
 import com.nd.momi.AbstractMomiTest;
 import com.nd.momi.config.ActionNames;
+import com.nd.momi.reception.localservice.ReceptionLocalService;
+import com.wolf.framework.utils.SecurityUtils;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.After;
@@ -12,9 +14,9 @@ import org.junit.Test;
  *
  * @author aladdin
  */
-public class SendMessageFromCustomerJUnitTest extends AbstractMomiTest {
+public class AdminLoginJUnitTest extends AbstractMomiTest {
 
-    public SendMessageFromCustomerJUnitTest() {
+    public AdminLoginJUnitTest() {
     }
 
     @Before
@@ -28,11 +30,10 @@ public class SendMessageFromCustomerJUnitTest extends AbstractMomiTest {
 
     @Test
     public void test() {
-        this.setCustomerSession("1158174740");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("receptionId", "271411");
-        parameterMap.put("message", "hello 271411");
-        String result = this.testHandler.execute(ActionNames.SEND_MESSAGE_FROM_CUSTOMER, parameterMap);
+        parameterMap.put("receptionId", "10000");
+        parameterMap.put("password", SecurityUtils.encryptByMd5(ReceptionLocalService.adminUserName));
+        String result = this.testHandler.execute(ActionNames.ADMIN_LOGIN, parameterMap);
         System.out.println(result);
     }
 }

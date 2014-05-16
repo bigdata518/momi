@@ -38,7 +38,7 @@ public class CustomerWaitServiceImpl implements Service {
     @Override
     public void execute(MessageContext messageContext) {
         String sid = messageContext.getSession().getSid();
-        String customerId = SessionUtils.getCustomerUserIdFromSessionId(sid);
+        String customerId = SessionUtils.getCustomerIdFromSessionId(sid);
         CustomerEntity customerEntity = this.customerLocalService.inquireCustomerById(customerId);
         String customerName = customerEntity.getCustomerName();
         long waitNum = this.customerLocalService.countWaitCustomerNum();
