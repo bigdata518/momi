@@ -2,8 +2,11 @@ package com.nd.momi.reception.service;
 
 import com.nd.momi.AbstractMomiTest;
 import com.nd.momi.config.ActionNames;
+import com.wolf.framework.config.DefaultResponseFlags;
+import com.wolf.framework.worker.context.Response;
 import java.util.HashMap;
 import java.util.Map;
+import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,7 +36,7 @@ public class InsertServiceServiceJUnitTest extends AbstractMomiTest {
         parameterMap.put("receptionId", "271411");
         parameterMap.put("receptionName", "jianying");
         parameterMap.put("type", "MEMBER");
-        String result = this.testHandler.execute(ActionNames.INSERT_RECEPTION, parameterMap);
-        System.out.println(result);
+        Response response = this.testHandler.execute(ActionNames.INSERT_RECEPTION, parameterMap);
+        System.out.println(response.getResponseMessage());
     }
 }

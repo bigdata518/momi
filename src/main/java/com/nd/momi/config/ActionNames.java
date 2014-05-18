@@ -6,7 +6,6 @@ package com.nd.momi.config;
  */
 public class ActionNames {
 
-    public final static String UPDATE = "UPDATE";
     //-----------------------文件------------------------//
     //保存图片
     public final static String INSERT_IMAGE = "INSERT_IMAGE";
