@@ -1,34 +1,37 @@
 <div id="customer-home" class="module">
-    <div class="top">
-    </div>
-    <div class="h20"></div>
-    <div id="wait-panel" class="box panel middle_content">
-        <div class="box_header">
-            <div>福州欢迎您</div>
-            <div class="h10"></div>
+    <div class="header skip">
+        <img class="logo" src="stylesheets/images/bell.png" />
+        <div class="split_line"></div>
+        <div class="title">MOMI在线客服</div>
+        <div class="momi_link button">
+            <img src="stylesheets/images/momi.png" />
+            <div>MOMI智能客服机器人</div>
         </div>
+    </div>
+    <div class="h10"></div>
+    <div id="wait-panel" class="content box panel">
         <div class="h20"></div>
-        <div id="welcome-info" class="label big_text red align_center"></div>
+        <div id="welcome-info" class="label welcome_customer"></div>
         <div class="h20"></div>
-        <div class="align_center">尊敬的VIP玩家,欢迎使用客服系统!</div>
+        <div class="welcome_content">您是VIP会员，我们将为您提供专人接待的VIP客服服务！</div>
         <div class="h20"></div>
-        <div class="align_center">马上为您安排专属人工服务。</div>
+        <div class="welcome_note">如果您在游戏过程中遇到任何问题，都可以随时联系我们的VIP客服，我们将为您提供满意的答复！</div>
         <div class="h20"></div>
-        <div id="wait-info" class="label align_center big_text red"></div>
+        <div id="wait-info" class="label wiat_info"></div>
         <div class="h20"></div>
     </div>
-    <div id="chat-panel" class="box panel customer_content hide">
-        <div class="box_header skip">
-            <div id="customer-info" class="label"></div>
-        </div>
-        <div id="chat-message-list" class="list middle_text chat_message_list scroll_list" scroll="true"></div>
-        <div id="chat-form" class="form chat_message_form">
-            <textarea name="message"></textarea>
-            <input type="hidden" name="receptionId" value="-1"/>
-            <div class="h10"></div>
-            <div id="send-button" class="button common_button">发送</div>
-            <div id="finish-button" class="button common_button">结束</div>
-            <div class="h10"></div>
+    <div id="chat-panel" class="content panel hide">
+        <div class="left_sidebar box"></div>
+        <div class="main_content skip box">
+            <div id="chat-message-list" class="list chat_message_list scroll_list" scroll="true"></div>
+            <div id="chat-form" class="form chat_message_form">
+                <textarea name="message"></textarea>
+                <input type="hidden" name="receptionId" value="-1"/>
+            </div>
+            <div class="chat_button_area skip">
+                <div id="send-button" class="button common_button">发送</div>
+                <div id="finish-button" class="button common_button">结束对话</div>
+            </div>
         </div>
     </div>
 </div>
