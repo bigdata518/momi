@@ -13,4 +13,6 @@ public class ActionGroupNames {
     public final static String RECEPTION = "客服接口";
     //
     public final static String MESSAGE = "消息接口";
+    //
+    public final static String BULLETIN = "公告接口";
 }
