@@ -9,11 +9,11 @@ define(function(require) {
     var _message = _yy.getMessage();
     var _utils = _yy.getUtils();
     self.init = function(thisModule) {
-        var waitPanel = thisModule.findChildByKey('wait-panel');
-        var chatPanel = thisModule.findChildByKey('chat-panel');
+        var waitPanel = thisModule.findByKey('wait-panel');
+        var chatPanel = thisModule.findByKey('chat-panel');
         var customerName = _yy.getSession('customerName');
         document.title = customerName;
-        var chatMessageList = thisModule.findChildByKey('chat-message-list');
+        var chatMessageList = thisModule.findByKey('chat-message-list');
         chatMessageList.init({
             key: 'messageId',
             itemClazz: '',
@@ -40,10 +40,10 @@ define(function(require) {
             }
         });
         //
-        var welcomeInfo = thisModule.findChildByKey('welcome-info');
+        var welcomeInfo = thisModule.findByKey('welcome-info');
         welcomeInfo.setLabel(customerName);
         //
-        var waitInfo = thisModule.findChildByKey('wait-info');
+        var waitInfo = thisModule.findByKey('wait-info');
         _message.listen(waitInfo, 'CUSTOMER_WAIT', function(thisCom, msg) {
             var info;
             if (msg.flag === 'SUCCESS') {
@@ -85,7 +85,7 @@ define(function(require) {
                 if (customerId === data.customerId) {
                     waitPanel.hide();
                     chatPanel.show();
-                    var charForm = thisModule.findChildByKey('chat-form');
+                    var charForm = thisModule.findByKey('chat-form');
                     charForm.setData('receptionId', data.receptionId);
                     //添加欢迎消息
                     var message = {
@@ -130,18 +130,18 @@ define(function(require) {
             }
         });
         //
-        var sendButton = thisModule.findChildByKey('send-button');
+        var sendButton = thisModule.findByKey('send-button');
         _event.bind(sendButton, 'click', function(thisCom) {
-            var charForm = thisModule.findChildByKey('chat-form');
+            var charForm = thisModule.findByKey('chat-form');
             var msg = charForm.getData();
             msg.act = 'SEND_MESSAGE_FROM_CUSTOMER';
             _message.send(msg);
             charForm.setData('message', '');
         });
         //
-        var finishButton = thisModule.findChildByKey('finish-button');
+        var finishButton = thisModule.findByKey('finish-button');
         _event.bind(finishButton, 'click', function(thisCom) {
-            var charForm = thisModule.findChildByKey('chat-form');
+            var charForm = thisModule.findByKey('chat-form');
             var msg = charForm.getData();
             msg.act = 'CUSTOMER_LOGOUT';
             var waitOrder = thisModule.getContext('waitOrder');
@@ -154,11 +154,11 @@ define(function(require) {
             thisModule.hide();
             thisModule.remove();
             document.title = 'im-玩家';
-            _module.loadModule('', 'customer-login');
+            _module.loadModule('customer-login');
         });
         //
         $(window).unload(function() {
-            var charForm = thisModule.findChildByKey('chat-form');
+            var charForm = thisModule.findByKey('chat-form');
             var msg = charForm.getData();
             var waitOrder = thisModule.getContext('waitOrder');
             if (waitOrder) {

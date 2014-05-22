@@ -77,8 +77,7 @@
                 yyLink.href = './libs/yy/stylesheets/yy.css' + '?v=' + v;
                 document.getElementsByTagName("head")[0].appendChild(yyLink);
                 //加载模块
-                module.loadModule('', 'customer-login', function() {
-                });
+                module.loadModule('customer-login');
                 yy.setConfig({
                     httpServer: 'http://192.168.19.137:7070/momi/service.io',
                     webSocketServer: 'ws://192.168.19.137:7070/momi/service.io'
