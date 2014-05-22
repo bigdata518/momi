@@ -1,0 +1,407 @@
+@charset "utf-8";
+
+body, div, input, textarea, img {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    border: none;
+}
+
+input, textarea {
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    background-color: white;
+    margin: 0;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0;
+    text-shadow: none;
+}
+
+html {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font: 14px/20px Verdana,Tohoma,simsun;
+    position: relative;
+}
+
+.h10 {
+    height: 10px;
+}
+
+.h20 {
+    height: 20px;
+}
+
+.h40 {
+    height: 40px;
+}
+
+.h60 {
+    height: 60px;
+}
+
+.h150 {
+    height: 150px;
+}
+
+.global_background {
+    background-color: #d0d0d0;
+    background-image: url("images/bg_grid.png");
+    background-repeat: repeat;
+}
+
+.header {
+    border-radius: 3px;
+    width: 970px;
+    margin: 0 auto;
+    position: relative;
+    height: 60px;
+    background: url("images/bg.png") repeat-x 0 -396px;
+    overflow: hidden;
+}
+
+.header > .logo {
+    float: left;
+    margin: 5px 0 5px 20px;
+    width: 45px;
+    height: 50px;
+}
+
+.header > .split_line {
+    float: left;
+    margin: 5px 20px;
+    width: 1px;
+    border-right: 1px solid #f97073;
+    height: 50px;
+    background-color: #d4292c;
+}
+
+.header > .title {
+    float: left;
+    margin: 5px 0;
+    padding: 12px 0;
+    height: 50px;
+    font-size: 20px;
+    color: #FFF;
+    text-shadow: 1px 2px 2px #b70003;
+}
+
+.header > .momi_link {
+    float: right;
+    margin: 2px 60px 2px 0;
+    padding: 0 10px;
+    border: 1px solid #f97073;
+}
+
+.header > .momi_link:hover {
+    background-color: #FF0206;
+}
+
+.momi_link > img {
+    height: 54px;
+    float: left;
+}
+
+.momi_link > div {
+    float: left;
+    padding: 16px 0;
+    height: 22px;
+    font-size: 14px;
+    color: #FFF;
+    text-shadow: 1px 2px 2px #b70003;
+}
+
+.content {
+    width: 970px;
+    margin: 0 auto;
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+}
+
+.main_content {
+    width: 700px;
+    min-height: 600px;
+    position: relative;
+    background: #f2f2f2;
+    overflow: hidden;
+    border-radius: 3px;
+    margin-left: 270px;
+}
+
+.left_sidebar {
+    width: 260px;
+    min-height: 600px;
+    position: absolute;
+    background: #f2f2f2;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.box {
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    color: #778087;
+}
+
+.box_header {
+    padding: 4px 2px;
+    font-size: 14px;
+    border-bottom: 1px solid #e2e2e2;
+    overflow: hidden;
+}
+
+.box_header > .link {
+    min-width: 60px;
+    padding: 3px;
+    text-align: center;
+}
+
+.box_content {
+    padding: 2px 2px;
+    overflow: hidden;
+}
+
+.common_button {
+    text-align: center;
+    color: #f0f0f0;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px 10px;
+    background: #EC4347
+}
+
+.common_button:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #FF4246
+}
+
+input {
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    box-shadow: 0pt 1px 2px rgba(0, 0, 0, 0.18) inset;
+    width: 313px;
+    height: 23px;
+    display: inline-block;
+}
+
+input.must {
+    border-right-color: red;
+    border-right-width: 3px;
+}
+
+.input_label {
+    font-size: 13px;
+    padding: 5px;
+}
+
+.msg_info {
+    text-align: left;
+    font-size: 12px;
+    padding: 2px;
+    color: green;
+    display: inline-block;
+}
+
+.msg_error {
+    text-align: left;
+    font-size: 12px;
+    padding: 2px;
+    color: red;
+    display: inline-block;
+}
+
+textarea {
+    border-radius: 3px;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    display: block;
+    box-shadow: 0pt 1px 2px rgba(0, 0, 0, 0.18) inset;
+}
+
+.login_wrapper {
+    background: #e8e8e8;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 658px;
+}
+
+.login_wrapper > .login_left_img, .login_wrapper > .login_form {
+    float: left;
+}
+
+.login_left_img {
+    width: 270px;
+    height: 270px;
+    background: #ffffff;
+}
+
+.login_form {
+    border-radius: 3px;
+    padding: 10px 30px;
+    background: #ffffff;
+    height: 250px;
+    width: 328px;
+    overflow: hidden;
+}
+
+.login_form > .input_label {
+    text-align: left;
+}
+
+.login_form > input {
+    width: 313px;
+}
+
+.welcome_customer {
+    color: red;
+    font-size: 30px;
+    text-align: center;
+    padding: 100px 0 10px 0;
+}
+
+.welcome_content {
+    font-size: 16px;
+    text-align: center;
+    padding: 3px 0;
+}
+
+.welcome_note {
+    text-align: center;
+    padding: 3px 0;
+}
+
+.wiat_info {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+    padding: 3px 0;
+}
+
+.chat_message_list {
+    padding: 0 15px;
+    height: 448px;
+    border-bottom: 1px solid #ccc;
+    overflow: hidden;
+}
+
+.chat_message_list > .list_item {
+    cursor: default;
+    padding: 0 10px 0 10px;
+    height: auto;
+    overflow: hidden;
+    zoom: 1;
+    border: none;
+}
+
+.chat_message_list > .list_item:hover {
+    background: transparent;
+}
+
+.chat_message_me, .chat_message_friend {
+    padding: 2px 0;
+    position: relative;
+    color: #212324
+}
+
+.chat_message_me {
+    min-width: 10%;
+    max-width: 80%;
+    float: right;
+    position: relative;
+    clear: both;
+}
+
+.chat_message_friend {
+    min-width: 5%;
+    max-width: 80%;
+    float: left;
+    position: relative;
+    clear: both;
+}
+
+.chat_message_me > .chat_message_time, .chat_message_friend > .chat_message_time {
+    height: 12px;
+    font-size: 10px;
+    padding: 0 0 5px 0;
+}
+
+.chat_message_me > .chat_message, .chat_message_friend > .chat_message {
+    padding: 8px 2px;
+    background: #E1F2D5;
+    border-radius: 3px;
+    word-wrap: break-word;
+    word-break: break-all;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.chat_message_me > .chat_message_time {
+    text-align: right;
+}
+
+.chat_message_friend > .chat_message_time {
+    text-align: left;
+}
+
+.chat_message_me > .chat_message_arrows, .chat_message_friend > .chat_message_arrows {
+    border-width: 6px;
+    position: absolute;
+}
+
+.chat_message_friend > .chat_message_arrows {
+    border-color: transparent #E1F2D5 transparent transparent;
+    border-style: dashed solid dashed dashed;
+    top: 24px;
+    left: -12px;
+}
+
+.chat_message_me > .chat_message_arrows {
+    border-color: transparent transparent transparent #E1F2D5;
+    border-style: dashed dashed dashed solid;
+    top: 24px;
+    right: -12px;
+}
+
+.chat_message_form {
+    padding: 2px;
+    border-bottom: 1px solid #ccc;
+}
+
+.chat_message_form > textarea {
+    overflow: hidden;
+    height: 90px;
+    padding: 2px;
+    width: 95%;
+    font-size: 12px;
+    border: none;
+    box-shadow: none;
+}
+
+.chat_button_area {
+    overflow: hidden;
+    padding: 1px 20px 1px 1px;
+}
+
+.chat_button_area > .common_button {
+    width: 120px;
+    float: right;
+    margin: 5px;
+}

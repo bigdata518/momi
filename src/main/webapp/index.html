@@ -4,13 +4,13 @@
         <meta charset="utf-8">
         <meta name="renderer" content="webkit|ie-comp|ie-stand">
         <meta http-equiv="content-type" content="text/html;charset=utf-8">
-        <title>im-玩家</title>
+        <title>momi-玩家登录</title>
         <script src="./libs/require/require.js"></script>
     </head>
     <body class="global_background">
         <script>
-//            var v = new Date().getTime();
-            var v = 1;
+            var v = new Date().getTime();
+//            var v = 2;
             require.config({
                 packages: [
                     {
@@ -68,7 +68,7 @@
                 var sinaLink = document.createElement("link");
                 sinaLink.type = "text/css";
                 sinaLink.rel = "stylesheet";
-                sinaLink.href = 'stylesheets/im.css' + '?v=' + v;
+                sinaLink.href = 'stylesheets/momi.css' + '?v=' + v;
                 document.getElementsByTagName("head")[0].appendChild(sinaLink);
 
                 var yyLink = document.createElement("link");
@@ -80,8 +80,8 @@
                 module.loadModule('', 'customer-login', function() {
                 });
                 yy.setConfig({
-                    httpServer: 'http://192.168.19.137:9090/momi/service.io',
-                    webSocketServer: 'ws://192.168.19.137:9090/momi/service.io'
+                    httpServer: 'http://192.168.19.137:7070/momi/service.io',
+                    webSocketServer: 'ws://192.168.19.137:7070/momi/service.io'
                 });
             });
         </script>

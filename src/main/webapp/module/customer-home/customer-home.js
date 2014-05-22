@@ -85,8 +85,6 @@ define(function(require) {
                 if (customerId === data.customerId) {
                     waitPanel.hide();
                     chatPanel.show();
-                    var customerInfo = thisModule.findChildByKey('customer-info');
-                    customerInfo.setLabel(data.customerName);
                     var charForm = thisModule.findChildByKey('chat-form');
                     charForm.setData('receptionId', data.receptionId);
                     //添加欢迎消息
