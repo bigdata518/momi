@@ -90,15 +90,12 @@ public class AllotWaitCustomerServiceImpl implements Service {
             while (state.equals("running")) {
                 //获取在线的前50处于接收状态(on)的客服列表
                 serviceStateEntityList = receptionLocalService.inquireOnService(1, 100);
-                if (serviceStateEntityList.isEmpty()) {
-                    //没有在线客服,退出
-                    state = "stop";
-                } else {
+                if (serviceStateEntityList.isEmpty() == false) {
+                    //有在线客服
                     //获取2倍与接收状态的客服数量的等待客户数量客户
                     waitCustomerEntityList = customerLocalService.inquireCustomerWait(1, 500);
-                    if (waitCustomerEntityList.isEmpty()) {
-                        state = "stop";
-                    } else {
+                    if (waitCustomerEntityList.isEmpty() == false) {
+                        //有等待的客户
                         int serviceIndex = 0;
                         ReceptionStateEntity serviceStateEntity;
                         WaitCustomerEntity waitCustomerEntity;
@@ -140,6 +137,7 @@ public class AllotWaitCustomerServiceImpl implements Service {
                     }
                 }
             }
+            state = "stop";
         }
     }
 }
