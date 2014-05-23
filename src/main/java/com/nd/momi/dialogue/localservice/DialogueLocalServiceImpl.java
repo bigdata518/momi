@@ -41,18 +41,11 @@ public class DialogueLocalServiceImpl implements DialogueLocalService {
      */
     @Override
     public void init() {
-        /*List<DialogueHistoryEntity> dialogueHistoryEntityList = this.getDialogueHistories();
-        if (dialogueHistoryEntityList == null) {
-            Map<String, String> entityMap = new HashMap<String, String>(7, 1);
-            entityMap.put("dialogueId", "");
-            entityMap.put("customerId", "");
-            entityMap.put("receptionId", "");
-            entityMap.put("gameId", "");
-            entityMap.put("createTime", "");
-            entityMap.put("endTime", "");
-            entityMap.put("state", "");
-            this.dialogueHistoryEntityDao.insert(entityMap);
-        }*/
+        //初始化历史对话表的主键值
+        long maxKeyValue = this.keyLocalService.getMaxKeyValue(TableNames.DIALOGUE_HISTORY);
+        if (maxKeyValue < 100000) {
+            this.keyLocalService.updateMaxKeyValue(TableNames.DIALOGUE_HISTORY, 100000);
+        }
     }
 
     private long nextDialogueHistoryId() {
