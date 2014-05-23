@@ -4,7 +4,7 @@ import com.nd.momi.bulletin.entity.BulletinEntity;
 import com.nd.momi.bulletin.localservice.BulletinLocalService;
 import com.nd.momi.config.ActionGroupNames;
 import com.nd.momi.config.ActionNames;
-import com.nd.momi.config.ResponseFlags;
+import com.nd.momi.bulletin.entity.BulletinType;
 import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
 import com.wolf.framework.service.Service;
@@ -14,7 +14,7 @@ import com.wolf.framework.worker.context.MessageContext;
 
 /**
  *
- * @author aladdin
+ * @author lgf
  */
 @ServiceConfig(
         actionName = ActionNames.CUSTOMER_BULLETIN_DISPLAY,
@@ -33,7 +33,7 @@ public class CustomerBulletinDisplayServiceImpl implements Service {
 
     @Override
     public void execute(MessageContext messageContext) {
-        BulletinEntity entity = this.bulletinLocalService.inquireBulletinByType("CUSTOMER");
+        BulletinEntity entity = this.bulletinLocalService.inquireBulletinByType(BulletinType.CUSTOMER);
         messageContext.setEntityData(entity);
         messageContext.success();
     }

@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2014/5/21.
+ * Created by lgf on 2014/5/21.
  */
 public class CustomerBulletinDisplayJUnitTest extends AbstractMomiTest {
 

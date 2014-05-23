@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  *
- * @author aladdin
+ * @author lgf
  */
 @ServiceConfig(
         actionName = ActionNames.RECEPTION_LEAVE,

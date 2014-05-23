@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  *
- * @author aladdin
+ * @author lgf
  */
 public class CustomerListJUnitTest extends AbstractMomiTest {
 
@@ -33,7 +33,7 @@ public class CustomerListJUnitTest extends AbstractMomiTest {
     @Test
     public void test() {
         this.setReceptionSession("2258174740");
-        Map<String, String> parameterMap = new HashMap<String, String>(1, 1);
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         Response response = this.testHandler.execute(ActionNames.CUSTOMER_LIST, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);

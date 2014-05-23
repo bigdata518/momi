@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  *
- * @author aladdin
+ * @author lgf
  */
 public class ReceptionComebackJUnitTest extends AbstractMomiTest {
 

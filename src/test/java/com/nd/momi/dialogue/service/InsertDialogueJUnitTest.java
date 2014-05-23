@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author cy
+ * @author lgf
  *
  */
 
@@ -34,10 +34,10 @@ public class InsertDialogueJUnitTest extends AbstractMomiTest {
     }
     //
 
-    @Test
+   // @Test
     public void test() {
         this.setCustomerSession("1158174740");
-        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        Map<String, String> parameterMap = new HashMap<String, String>(4, 1);
         parameterMap.put("customerId", "1158174740");
         parameterMap.put("receptionId", "2258174740");
         parameterMap.put("gameId", "1");

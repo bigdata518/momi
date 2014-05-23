@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2014/5/23.
+ * Created by lgf on 2014/5/23.
  */
 @RDaoConfig(
         tableName = TableNames.DIALOGUE_HISTORY,
@@ -74,7 +74,7 @@ public final class DialogueHistoryEntity extends Entity {
 
     @Override
     public Map<String, String> toMap() {
-        Map<String, String> map = new HashMap<String, String>(7, 1);
+        Map<String, String> map = new HashMap<String, String>(8, 1);
         map.put("dialogueId", this.dialogueId);
         map.put("customerId", this.customerId);
         map.put("receptionId", this.receptionId);

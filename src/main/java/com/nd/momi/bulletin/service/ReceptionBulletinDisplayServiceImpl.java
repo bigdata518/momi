@@ -4,24 +4,17 @@ import com.nd.momi.bulletin.entity.BulletinEntity;
 import com.nd.momi.bulletin.localservice.BulletinLocalService;
 import com.nd.momi.config.ActionGroupNames;
 import com.nd.momi.config.ActionNames;
-import com.nd.momi.config.ResponseFlags;
-import com.nd.momi.customer.entity.CustomerEntity;
-import com.nd.momi.customer.localservice.CustomerLocalService;
-import com.nd.momi.utils.SessionUtils;
+import com.nd.momi.bulletin.entity.BulletinType;
 import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
 import com.wolf.framework.service.Service;
 import com.wolf.framework.service.ServiceConfig;
-import com.wolf.framework.service.SessionHandleTypeEnum;
-import com.wolf.framework.service.parameter.RequestConfig;
 import com.wolf.framework.service.parameter.ResponseConfig;
-import com.wolf.framework.session.Session;
-import com.wolf.framework.session.SessionImpl;
 import com.wolf.framework.worker.context.MessageContext;
 
 /**
  *
- * @author aladdin
+ * @author lgf
  */
 @ServiceConfig(
         actionName = ActionNames.RECEPTION_BULLETIN_DISPLAY,
@@ -40,7 +33,7 @@ public class ReceptionBulletinDisplayServiceImpl implements Service {
 
     @Override
     public void execute(MessageContext messageContext) {
-        BulletinEntity entity = this.bulletinLocalService.inquireBulletinByType("RECEPTION");
+        BulletinEntity entity = this.bulletinLocalService.inquireBulletinByType(BulletinType.RECEPTION);
         messageContext.setEntityData(entity);
         messageContext.success();
 

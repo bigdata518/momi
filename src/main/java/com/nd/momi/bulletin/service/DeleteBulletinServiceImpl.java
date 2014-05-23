@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  *
- * @author aladdin
+ * @author lgf
  */
 @ServiceConfig(
         actionName = ActionNames.DELETE_BULLETIN,

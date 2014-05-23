@@ -5,6 +5,7 @@ package com.nd.momi.dialogue.service;
 
 import com.nd.momi.config.ActionGroupNames;
 import com.nd.momi.config.ActionNames;
+import com.nd.momi.dialogue.entity.DialogueEndState;
 import com.nd.momi.dialogue.entity.DialogueEntity;
 import com.nd.momi.dialogue.localservice.DialogueLocalService;
 import com.nd.momi.utils.SessionUtils;
@@ -16,7 +17,6 @@ import com.wolf.framework.service.parameter.RequestConfig;
 import com.wolf.framework.service.parameter.ResponseConfig;
 import com.wolf.framework.worker.context.MessageContext;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -51,7 +51,9 @@ public class CustomerFinishDialogueServiceImpl implements Service {
         String receptionId = parameterMap.get("receptionId");
         DialogueEntity dialogueEntity = this.dialogueLocalService.inquireDialogueByCustomerId(customerId);
         this.dialogueLocalService.deleteDialogue(customerId);
-        this.dialogueLocalService.insertDialogueHistory(dialogueEntity.toMap());
+        Map<String,String> map = dialogueEntity.toMap();
+        map.put("state", DialogueEndState.NORMAL_END);
+        this.dialogueLocalService.insertDialogueHistory(map);
         parameterMap.put("customerId",customerId);
         messageContext.setMapData(parameterMap);
         String serviceSid = SessionUtils.createReceptionSessionId(receptionId);

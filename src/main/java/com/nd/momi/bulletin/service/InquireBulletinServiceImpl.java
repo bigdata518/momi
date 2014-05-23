@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  *
- * @author aladdin
+ * @author lgf
  */
 @ServiceConfig(
         actionName = ActionNames.INQUIRE_BULLETIN,

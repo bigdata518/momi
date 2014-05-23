@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  *
- * @author aladdin
+ * @author lgf
  */
 @ServiceConfig(
         actionName = ActionNames.RECEPTION_COMEBACK,
@@ -38,7 +38,7 @@ public class ReceptionComebackServiceImpl implements Service {
 
     @Override
     public void execute(MessageContext messageContext) {
-        Map<String, String> parameterMap = new HashMap<String, String>(1,1);
+        Map<String, String> parameterMap = new HashMap<String, String>(2,1);
         Session session = messageContext.getSession();
         String receptionId = SessionUtils.getReceptionIdFromSessionId(session.getSid());
         ReceptionEntity userEntity = this.receptionLocalService.inquireRecepitonById(receptionId);

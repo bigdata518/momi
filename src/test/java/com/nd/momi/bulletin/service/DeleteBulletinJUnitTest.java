@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2014/5/21.
+ * Created by lgf on 2014/5/21.
  */
 public class DeleteBulletinJUnitTest extends AbstractMomiTest {
 
@@ -35,7 +35,7 @@ public class DeleteBulletinJUnitTest extends AbstractMomiTest {
     //@Test
     public void testReception(){
         this.setReceptionSession("10000");
-        Map<String, String> parameterMap = new HashMap<String, String>(1, 1);
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("bulletinType", "RECEPTION");
         Response response = this.testHandler.execute(ActionNames.DELETE_BULLETIN, parameterMap);
         System.out.println(response.getResponseMessage());

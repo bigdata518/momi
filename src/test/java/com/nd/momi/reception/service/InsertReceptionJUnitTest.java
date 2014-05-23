@@ -32,7 +32,7 @@ public class InsertReceptionJUnitTest extends AbstractMomiTest {
     @Test
     public void test() {
         this.setReceptionSession("10000");
-        Map<String, String> parameterMap = new HashMap<String, String>(3, 1);
+        Map<String, String> parameterMap = new HashMap<String, String>(4, 1);
         parameterMap.put("receptionId", "707909");
         parameterMap.put("receptionName", "guifang");
         parameterMap.put("type", "MEMBER");

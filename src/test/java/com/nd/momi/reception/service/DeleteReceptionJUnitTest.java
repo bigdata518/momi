@@ -14,7 +14,7 @@ import java.util.Map;
 
 /**
  *
- * @author aladdin
+ * @author lgf
  */
 public class DeleteReceptionJUnitTest extends AbstractMomiTest {
 
@@ -33,7 +33,7 @@ public class DeleteReceptionJUnitTest extends AbstractMomiTest {
     @Test
     public void test() {
         this.setReceptionSession("10000");
-        Map<String, String> parameterMap = new HashMap<String, String>(3, 1);
+        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("receptionId", "707909");
         Response response = this.testHandler.execute(ActionNames.DELETE_RECEPTION, parameterMap);
         System.out.println(response.getResponseMessage());

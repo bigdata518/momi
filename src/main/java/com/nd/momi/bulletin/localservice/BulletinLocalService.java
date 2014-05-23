@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  *
- * @author jianying9
+ * @author lgf
  */
 public interface BulletinLocalService extends Local {
 

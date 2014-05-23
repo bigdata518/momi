@@ -1,20 +1,18 @@
 package com.nd.momi.bulletin.localservice;
 
 import com.nd.momi.bulletin.entity.BulletinEntity;
-import com.nd.momi.reception.entity.ReceptionTypeEnum;
-import com.nd.momi.reception.localservice.ReceptionLocalService;
+import com.nd.momi.bulletin.entity.BulletinType;
 import com.wolf.framework.dao.REntityDao;
 import com.wolf.framework.dao.annotation.InjectRDao;
 import com.wolf.framework.dao.condition.InquirePageContext;
 import com.wolf.framework.local.LocalServiceConfig;
-import com.wolf.framework.utils.SecurityUtils;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * Created by Administrator on 2014/5/21.
+ * Created by lgf on 2014/5/21.
  */
 @LocalServiceConfig(
         interfaceInfo =BulletinLocalService.class,
@@ -59,7 +57,7 @@ public class BulletinLocalServiceImpl implements BulletinLocalService{
         if(customerBulletinEntity == null){
             Map<String, String> entityMap = new HashMap<String, String>(4, 1);
             final long createTime = System.currentTimeMillis();
-            entityMap.put("bulletinType", "CUSTOMER");
+            entityMap.put("bulletinType", BulletinType.CUSTOMER);
             entityMap.put("title", "");
             entityMap.put("content", "");
             entityMap.put("createTime",Long.toString(createTime));
@@ -68,7 +66,7 @@ public class BulletinLocalServiceImpl implements BulletinLocalService{
         if(receptionBulletinEntity == null){
             Map<String, String> entityMap = new HashMap<String, String>(4, 1);
             final long createTime = System.currentTimeMillis();
-            entityMap.put("bulletinType", "RECEPTION");
+            entityMap.put("bulletinType", BulletinType.RECEPTION);
             entityMap.put("title", "");
             entityMap.put("content", "");
             entityMap.put("createTime",Long.toString(createTime));

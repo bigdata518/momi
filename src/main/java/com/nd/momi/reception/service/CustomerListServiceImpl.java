@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.nd.momi.customer.service;
+package com.nd.momi.reception.service;
 
 import com.nd.momi.config.ActionGroupNames;
 import com.nd.momi.config.ActionNames;
@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Alex
+ * @author lgf
  *
  */
 @ServiceConfig(

@@ -41,7 +41,7 @@ public class DialogueLocalServiceImpl implements DialogueLocalService {
      */
     @Override
     public void init() {
-        List<DialogueHistoryEntity> dialogueHistoryEntityList = this.getDialogueHistories();
+        /*List<DialogueHistoryEntity> dialogueHistoryEntityList = this.getDialogueHistories();
         if (dialogueHistoryEntityList == null) {
             Map<String, String> entityMap = new HashMap<String, String>(7, 1);
             entityMap.put("dialogueId", "");
@@ -52,7 +52,7 @@ public class DialogueLocalServiceImpl implements DialogueLocalService {
             entityMap.put("endTime", "");
             entityMap.put("state", "");
             this.dialogueHistoryEntityDao.insert(entityMap);
-        }
+        }*/
     }
 
     private long nextDialogueHistoryId() {

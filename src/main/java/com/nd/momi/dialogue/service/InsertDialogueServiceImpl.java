@@ -19,7 +19,7 @@ import com.wolf.framework.worker.context.MessageContext;
 import java.util.Map;
 
 /**
- * @author cy
+ * @author lgf
  *
  */
 @ServiceConfig(
