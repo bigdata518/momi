@@ -67,7 +67,3 @@
 .panel:hover > .scroll, .list:hover > .scroll {
     display: block;
 }
-
-.list > .list_header{
-    position: relative;
-}
