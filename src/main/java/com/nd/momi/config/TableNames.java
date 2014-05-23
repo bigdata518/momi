@@ -24,4 +24,8 @@ public class TableNames {
     //消息表
     public final static String MESSAGE = "MESSAGE";
     public final static int MESSAGE_INDEX = 6;
+
+    //公告表
+    public final static String BULLETIN = "BULLETIN";
+    public final static int BULLETIN_INDEX = 9;
 }

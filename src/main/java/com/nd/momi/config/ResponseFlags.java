@@ -12,4 +12,5 @@ public class ResponseFlags {
     public final static String FAILURE_PASSWORD_ERROR = "FAILURE_PASSWORD_ERROR";
     //id已经被使用
     public final static String FAILURE_ID_USED = "FAILURE_ID_USED";
+
 }

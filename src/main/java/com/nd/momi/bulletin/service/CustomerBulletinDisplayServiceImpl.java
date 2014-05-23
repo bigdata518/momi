@@ -1,0 +1,40 @@
+package com.nd.momi.bulletin.service;
+
+import com.nd.momi.bulletin.entity.BulletinEntity;
+import com.nd.momi.bulletin.localservice.BulletinLocalService;
+import com.nd.momi.config.ActionGroupNames;
+import com.nd.momi.config.ActionNames;
+import com.nd.momi.config.ResponseFlags;
+import com.wolf.framework.data.TypeEnum;
+import com.wolf.framework.local.InjectLocalService;
+import com.wolf.framework.service.Service;
+import com.wolf.framework.service.ServiceConfig;
+import com.wolf.framework.service.parameter.ResponseConfig;
+import com.wolf.framework.worker.context.MessageContext;
+
+/**
+ *
+ * @author aladdin
+ */
+@ServiceConfig(
+        actionName = ActionNames.CUSTOMER_BULLETIN_DISPLAY,
+        responseConfigs = {
+    @ResponseConfig(name = "title", typeEnum = TypeEnum.CHAR_32, desc = "标题"),
+    @ResponseConfig(name = "content", typeEnum = TypeEnum.CHAR_32, desc = "公告内容")
+},
+        validateSession = true,
+        response = true,
+        group = ActionGroupNames.BULLETIN,
+        description = "客户公告显示")
+public class CustomerBulletinDisplayServiceImpl implements Service {
+
+    @InjectLocalService()
+    private BulletinLocalService bulletinLocalService;
+
+    @Override
+    public void execute(MessageContext messageContext) {
+        BulletinEntity entity = this.bulletinLocalService.inquireBulletinByType("CUSTOMER");
+        messageContext.setEntityData(entity);
+        messageContext.success();
+    }
+}

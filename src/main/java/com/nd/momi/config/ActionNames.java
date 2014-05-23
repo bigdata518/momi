@@ -40,4 +40,18 @@ public class ActionNames {
     public final static String SEND_MESSAGE_FROM_CUSTOMER = "SEND_MESSAGE_FROM_CUSTOMER";
     //客服发送消息至客户
     public final static String SEND_MESSAGE_FROM_RECEPTION = "SEND_MESSAGE_FROM_RECEPTION";
+    //-----------------------------公告------------------------------//
+    //添加公告接口
+    public final static String INSERT_BULLETIN = "INSERT_BULLETIN";
+    //修改公告接口
+    public final static String UPDATE_BULLETIN = "UPDATE_BULLETIN";
+    //删除公告接口
+    public final static String DELETE_BULLETIN = "DELETE_BULLETIN";
+    //查询公告接口
+    public final static String INQUIRE_BULLETIN = "INQUIRE_BULLETIN";
+    //客服公告显示接口
+    public final static String RECEPTION_BULLETIN_DISPLAY = "RECEPTION_BULLETIN_DISPLAY";
+    //客户公告显示接口
+    public final static String CUSTOMER_BULLETIN_DISPLAY = "CUSTOMER_BULLETIN_DISPLAY";
+
 }
