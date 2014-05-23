@@ -552,17 +552,17 @@ textarea {
 }
 
 .message_panel {
-    width: 789px;
+    width: 739px;
     float: right;
 }
 
 .message_list {
-    height: 290px;
+    height: 440px;
     border-bottom: 1px solid #e2e2e2;
 }
 
 .customer_list {
-    width: 180px;
+    width: 230px;
     height: 600px;
     border-right: 1px solid #e2e2e2;
 }
@@ -570,4 +570,5 @@ textarea {
 .reception_tools > .common_button{
     width: 100px;
     float: right;
+    margin-right: 20px;
 }
