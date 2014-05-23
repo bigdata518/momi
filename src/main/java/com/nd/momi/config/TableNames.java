@@ -24,6 +24,15 @@ public class TableNames {
     //消息表
     public final static String MESSAGE = "MESSAGE";
     public final static int MESSAGE_INDEX = 6;
+    //游戏表
+    public final static String GAME = "GAME";
+    public final static int GAME_INDEX = 7;
+    //服务评价表
+    public final static String RECEPTION_EVALUATE = "RECEPTION_EVALUATE";
+    public final static int RECEPTION_EVALUATE_INDEX = 8;
+    //对话表
+    public final static String DIALOGUE = "DIALOGUE";
+    public final static int DIALOGUE_INDEX = 10;
 
     //公告表
     public final static String BULLETIN = "BULLETIN";
