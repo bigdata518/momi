@@ -56,12 +56,6 @@ public class GameLocalServiceImpl implements GameLocalService {
 
     @Override
     public void init() {
-        List<GameEntity> gameEntityList = this.getGames();
-        if(gameEntityList == null){
-            Map<String, String> entityMap = new HashMap<String, String>(2, 1);
-            entityMap.put("gameId", "");
-            entityMap.put("gameName", "");
-            this.gameEntityDao.insert(entityMap);
+
         }
     }
-}
