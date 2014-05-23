@@ -55,7 +55,7 @@ public class CustomerLogoutServiceImpl implements Service {
         messageContext.setMapData(resultMap);
         messageContext.success();
         if (receptionId.equals("-1") == true) {
-            //还未分配客服
+            //还未分配客服人员
             //判断是否在等待队列
             String waitOrder = messageContext.getParameter("waitOrder");
             if (waitOrder != null) {

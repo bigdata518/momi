@@ -45,6 +45,7 @@ public class CustomerLoginServiceImpl implements Service {
         String customerId = messageContext.getParameter("customerId");
         CustomerEntity entity = this.customerLocalService.inquireCustomerById(customerId);
         if (entity != null) {
+            //判断是否为空，session验证
             String sid = SessionUtils.createCustomerSessionId(customerId);
             Session session = new SessionImpl(sid);
             messageContext.setNewSession(session);

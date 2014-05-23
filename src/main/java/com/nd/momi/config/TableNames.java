@@ -30,11 +30,12 @@ public class TableNames {
     //服务评价表
     public final static String RECEPTION_EVALUATE = "RECEPTION_EVALUATE";
     public final static int RECEPTION_EVALUATE_INDEX = 8;
+    //公告表
+    public final static String BULLETIN = "BULLETIN";
+    public final static int BULLETIN_INDEX = 9;
     //对话表
     public final static String DIALOGUE = "DIALOGUE";
     public final static int DIALOGUE_INDEX = 10;
 
-    //公告表
-    public final static String BULLETIN = "BULLETIN";
-    public final static int BULLETIN_INDEX = 9;
+
 }

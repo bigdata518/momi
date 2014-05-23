@@ -32,6 +32,7 @@ public class InquireCustomerServiceImpl implements Service {
 
     @Override
     public void execute(MessageContext messageContext) {
+        //随机获客户账号信息
         CustomerEntity entity = this.customerLocalService.inquireCustomer();
         messageContext.setEntityData(entity);
         messageContext.success();

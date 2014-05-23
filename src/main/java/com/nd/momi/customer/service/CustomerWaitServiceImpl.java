@@ -43,6 +43,7 @@ public class CustomerWaitServiceImpl implements Service {
         String customerName = customerEntity.getCustomerName();
         long waitNum = this.customerLocalService.countWaitCustomerNum();
         String waitOrder = Long.toString(System.currentTimeMillis());
+        //等待队列
         this.customerLocalService.insertWaitCustomer(customerId, customerName, waitOrder);
         Map<String, String> resultMap = new HashMap<String, String>(4, 1);
         resultMap.put("customerId", customerId);
