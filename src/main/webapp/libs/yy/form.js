@@ -12,7 +12,7 @@ define(function(require) {
         _extend.lastData = {};
         component.init = function() {
             var that = this;
-            var $fields = that.$this.children('input,textarea');
+            var $fields = that.$this.find('input,textarea');
             $fields.each(function() {
                 var $this = $(this);
                 var name = $this.attr('name');

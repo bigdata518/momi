@@ -54,6 +54,10 @@ body {
     height: 150px;
 }
 
+.w200 {
+    width: 200px;
+}
+
 .global_background {
     background-color: #d0d0d0;
     background-image: url("images/bg_grid.png");
@@ -88,12 +92,17 @@ body {
 
 .header > .title {
     float: left;
-    margin: 5px 0;
-    padding: 12px 0;
-    height: 50px;
+    padding: 20px 0;
     font-size: 20px;
     color: #FFF;
     text-shadow: 1px 2px 2px #b70003;
+}
+
+.header > .link {
+    float: left;
+    padding: 23px 0;
+    font-size: 14px;
+    color: #FFF;
 }
 
 .header > .momi_link {
@@ -103,8 +112,8 @@ body {
     border: 1px solid #f97073;
 }
 
-.header > .momi_link:hover {
-    background-color: #FF0206;
+.header > .momi_link:hover, .header > .link:hover {
+    background-color: #A40000;
 }
 
 .momi_link > img {
@@ -148,29 +157,15 @@ body {
     border-radius: 3px;
 }
 
+.navigation_list {
+
+}
+
 .box {
     background: #fff;
     border-radius: 3px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     color: #778087;
-}
-
-.box_header {
-    padding: 4px 2px;
-    font-size: 14px;
-    border-bottom: 1px solid #e2e2e2;
-    overflow: hidden;
-}
-
-.box_header > .link {
-    min-width: 60px;
-    padding: 3px;
-    text-align: center;
-}
-
-.box_content {
-    padding: 2px 2px;
-    overflow: hidden;
 }
 
 .common_button {
@@ -249,17 +244,12 @@ textarea {
 }
 
 .login_left_img {
-    width: 270px;
-    height: 270px;
     background: #ffffff;
 }
 
 .login_form {
     border-radius: 3px;
-    padding: 10px 30px;
     background: #ffffff;
-    height: 250px;
-    width: 328px;
     overflow: hidden;
 }
 
@@ -267,8 +257,34 @@ textarea {
     text-align: left;
 }
 
-.login_form > input {
+.customer_login_form > input {
     width: 313px;
+}
+
+.customer_login_left {
+    width: 270px;
+    height: 270px;
+}
+
+.customer_login_form {
+    padding: 10px 30px;
+    height: 250px;
+    width: 328px;
+}
+
+.reception_login_left {
+    padding: 16px 0;
+    width: 344px;
+    height: 237px;
+}
+
+.recepton_login_form {
+    padding: 55px 10px 60px 17px;
+    width: 287px;
+}
+
+.recepton_login_form > input {
+    width: 273px;
 }
 
 .welcome_customer {
@@ -404,4 +420,155 @@ textarea {
     width: 120px;
     float: right;
     margin: 5px;
+}
+
+.navigation_list {
+    width: 970px;
+    margin: 0 auto;
+    position: relative;
+    background: #E4393C;
+    overflow: hidden;
+    color: #fff;
+    border-radius: 3px 3px 0 0;
+}
+
+.navigation_list > .list_item {
+    float: left;
+    width: 85px;
+    padding: 9px 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+.navigation_list > .list_item:hover,  .navigation_list > .list_item.selected {
+    background: #A40000;
+}
+
+.panel_list {
+    width: 970px;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+    background: #f2f2f2;
+    overflow: hidden;
+    border-radius: 0 0 3px 3px;
+}
+
+.panel_list > .list_item{
+    position:absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+}
+
+.button_tools {
+    color: #fff;
+    padding: 6px 10px;
+    font-size: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+    overflow: hidden;
+}
+
+.common_link {
+    margin: 0 10px;
+    width: 74px;
+    padding: 2px;
+    border: 1px solid #EFEFEF;
+    background-color: #F7F7F7;
+    cursor: pointer;
+    text-align: center;
+    color:#666;
+    border-radius: 3px;
+}
+
+.common_link:hover {
+    background: #EC4347;
+    color:#fff;
+}
+
+.button_tools > .common_link {
+    float: right;
+}
+
+.reception_panel {
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+}
+
+.insert_reception_form {
+    margin-right: 10px;
+    padding: 3px 0 3px 300px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.insert_reception_form .input_label, .insert_reception_form .msg_error {
+    display: inline-block;
+}
+
+.insert_reception_form > .common_button {
+    margin-left: 40px;
+    width: 120px;
+}
+
+.list_header {
+    padding: 3px 5px 0px 5px;
+    border-bottom: 1px solid #e2e2e2;
+    color: #000000;
+    font-weight: bold;
+    background-color: #f8f8f9;
+}
+
+.reception_list {
+    margin-right: 10px;
+}
+
+.reception_list > .list_item:hover {
+    background: #F1EDED;
+}
+
+.reception_list > .list_item {
+    padding: 3px 5px;
+    border-bottom: 1px solid #e2e2e2;
+    border-right: 1px solid #e2e2e2;
+}
+
+.list_header > .w200 {
+    display: inline-block;
+}
+
+.list_item > .w200 {
+    display: inline-block;
+}
+
+.reception_list .common_link {
+    display: inline-block;
+}
+
+.more_button {
+    text-align: center;
+}
+
+.message_panel {
+    width: 739px;
+    float: right;
+}
+
+.message_list {
+    height: 440px;
+    border-bottom: 1px solid #e2e2e2;
+}
+
+.customer_list {
+    width: 230px;
+    height: 600px;
+    border-right: 1px solid #e2e2e2;
+}
+
+.reception_tools > .common_button{
+    width: 100px;
+    float: right;
+    margin-right: 20px;
 }
