@@ -15,9 +15,9 @@ import org.junit.Test;
  *
  * @author aladdin
  */
-public class InsertServiceServiceJUnitTest extends AbstractMomiTest {
+public class ReceptionLoginJUnitTest extends AbstractMomiTest {
 
-    public InsertServiceServiceJUnitTest() {
+    public ReceptionLoginJUnitTest() {
     }
 
     @Before
@@ -31,12 +31,10 @@ public class InsertServiceServiceJUnitTest extends AbstractMomiTest {
 
     @Test
     public void test() {
-        this.setReceptionSession("10000");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("receptionId", "271411");
-        parameterMap.put("receptionName", "jianying");
-        parameterMap.put("type", "MEMBER");
-        Response response = this.testHandler.execute(ActionNames.INSERT_RECEPTION, parameterMap);
+        Response response = this.testHandler.execute(ActionNames.RECEPTION_LOGIN, parameterMap);
         System.out.println(response.getResponseMessage());
+        Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
     }
 }

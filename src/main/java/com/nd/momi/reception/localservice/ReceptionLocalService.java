@@ -30,6 +30,8 @@ public interface ReceptionLocalService extends Local {
     public void onService(ReceptionEntity entity);
 
     public void offService(String receptionId, String offMessage);
+
+    public void comebackService(String receptionId);
     
     public List<ReceptionStateEntity> inquireOnService(long pageIndex, long pageSize);
 }

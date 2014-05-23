@@ -2,22 +2,25 @@ package com.nd.momi.reception.service;
 
 import com.nd.momi.AbstractMomiTest;
 import com.nd.momi.config.ActionNames;
+import com.nd.momi.reception.localservice.ReceptionLocalService;
 import com.wolf.framework.config.DefaultResponseFlags;
+import com.wolf.framework.utils.SecurityUtils;
 import com.wolf.framework.worker.context.Response;
-import java.util.HashMap;
-import java.util.Map;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author aladdin
  */
-public class ServiceLogoutJUnitTest extends AbstractMomiTest {
+public class AllotWaitCustomerJUnitTest extends AbstractMomiTest {
 
-    public ServiceLogoutJUnitTest() {
+    public AllotWaitCustomerJUnitTest() {
     }
 
     @Before
@@ -31,9 +34,8 @@ public class ServiceLogoutJUnitTest extends AbstractMomiTest {
 
     @Test
     public void test() {
-        this.setReceptionSession("271411");
-        Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        Response response = this.testHandler.execute(ActionNames.RECEPTION_LOGOUT, parameterMap);
+        Map<String, String> parameterMap = new HashMap<String, String>();
+        Response response = this.testHandler.execute(ActionNames.ALLOT_WAIT_CUSTOMER, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
     }

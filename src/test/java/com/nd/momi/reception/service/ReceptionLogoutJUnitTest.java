@@ -15,9 +15,9 @@ import org.junit.Test;
  *
  * @author aladdin
  */
-public class InquireServiceServiceJUnitTest extends AbstractMomiTest {
+public class ReceptionLogoutJUnitTest extends AbstractMomiTest {
 
-    public InquireServiceServiceJUnitTest() {
+    public ReceptionLogoutJUnitTest() {
     }
 
     @Before
@@ -31,9 +31,9 @@ public class InquireServiceServiceJUnitTest extends AbstractMomiTest {
 
     @Test
     public void test() {
-        this.setReceptionSession("10000");
+        this.setReceptionSession("271411");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        Response response = this.testHandler.execute(ActionNames.INQUIRE_RECEPTION, parameterMap);
+        Response response = this.testHandler.execute(ActionNames.RECEPTION_LOGOUT, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
     }

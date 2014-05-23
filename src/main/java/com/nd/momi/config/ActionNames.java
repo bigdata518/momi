@@ -26,6 +26,10 @@ public class ActionNames {
     public final static String DELETE_RECEPTION = "DELETE_RECEPTION";
     //分配等待队列中的客户给客服
     public final static String ALLOT_WAIT_CUSTOMER = "ALLOT_WAIT_CUSTOMER";
+    //客服离开
+    public final static String RECEPTION_LEAVE = "RECEPTION_LEAVE";
+    //客服回岗
+    public final static String RECEPTION_COMEBACK = "RECEPTION_COMEBACK";
     //----------------------------客户接口---------------------------//
     //随机查询
     public final static String INQUIRE_CUSTOMER = "INQUIRE_CUSTOMER";

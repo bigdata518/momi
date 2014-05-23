@@ -96,6 +96,14 @@ public class ReceptionLocalServiceImpl implements ReceptionLocalService {
     }
 
     @Override
+    public void comebackService(String receptionId) {
+        Map<String, String> entityMap = new HashMap<String, String>(4, 1);
+        entityMap.put("receptionId", receptionId);
+        entityMap.put("state", "on");
+        this.receptionStateEntityDao.update(entityMap);
+    }
+
+    @Override
     public List<ReceptionStateEntity> inquireOnService(long pageIndex, long pageSize) {
         InquireIndexPageContext inquirePageContext = new InquireIndexPageContext("state", "on");
         inquirePageContext.setPageSize(pageSize);
