@@ -1,5 +1,6 @@
 define(function(require) {
     var _yy = require('yy');
+    var _index = _yy.getIndex();
     require('yy/panel');
     require('yy/list');
     require('yy/label');
@@ -12,19 +13,21 @@ define(function(require) {
     self.init = function(thisModule) {
         var receptionName = _yy.getSession('receptionName');
         document.title = receptionName;
+        //获取提交表单
+        var chatForm = thisModule.findByKey('chat-form');
         //初始化聊天列表
         var messageList = thisModule.findByKey('message-list');
         messageList.init({
             key: 'customerId',
-            itemClazz: 'hide',
+            itemClazz: '',
             itemDataToHtml: function(itemData) {
                 var result = '<div class="chat_title">' + itemData.customerName + '</div>'
-                        + '<div id="' + itemData.customerId + '-chat-message-list" class="list chat_message_list scroll_list" scroll="true"></div>';
+                        + '<div id="' + itemData.customerId + '-chat-message-list" class="list chat_message_list" scroll="true"></div>';
                 return result;
             },
             itemCompleted: function(itemCom) {
                 var chatListId = itemCom.key + '-chat-message-list';
-                var chatList = itemCom.findByKey(chatListId);
+                var chatList = itemCom.findChildByKey(chatListId);
                 chatList.init({
                     key: 'messageId',
                     itemClazz: '',
@@ -51,7 +54,7 @@ define(function(require) {
             key: 'customerId',
             itemClazz: 'online',
             itemDataToHtml: function(itemData) {
-                var result = '<div class="inline_block w100">' + itemData.customerName + '</div>'
+                var result = '<div>' + itemData.customerName + '</div>'
                         + '<div class="customer_state"></div>';
 
                 return result;
@@ -62,13 +65,13 @@ define(function(require) {
                     thisCom.selected();
                     //切换聊天窗口
                     var messageItem = messageList.getItemByKey(customerId);
-                    messageItem.selected();
+                    var zIndex = _index.nextZIndex();
+                    messageItem.$this.css({zIndex: zIndex});
                     //
                     var chatListId = customerId + '-chat-message-list';
-                    var chatList = messageItem.findByKey(chatListId);
+                    var chatList = messageItem.findChildByKey(chatListId);
                     chatList.initScroll();
                     //
-                    var chatForm = thisModule.findByKey('chat-form');
                     chatForm.setData('customerId', customerId);
                 });
             }
@@ -91,7 +94,7 @@ define(function(require) {
                 var messageItem = messageList.getItemByKey(data.customerId);
                 if (messageItem) {
                     var chatListId = data.customerId + '-chat-message-list';
-                    var chatList = messageItem.findByKey(chatListId);
+                    var chatList = messageItem.findChildByKey(chatListId);
                     if (chatList) {
                         chatList.addItemData(message);
                         chatList.scrollBottom();
@@ -119,7 +122,7 @@ define(function(require) {
                 var messageItem = messageList.getItemByKey(data.customerId);
                 if (messageItem) {
                     var chatListId = data.customerId + '-chat-message-list';
-                    var chatList = messageItem.findByKey(chatListId);
+                    var chatList = messageItem.findChildByKey(chatListId);
                     if (chatList) {
                         chatList.addItemData(message);
                         chatList.scrollBottom();
@@ -135,7 +138,7 @@ define(function(require) {
                 var messageItem = thisCom.getItemByKey(customerId);
                 if (messageItem) {
                     var chatListId = customerId + '-chat-message-list';
-                    var chatList = messageItem.findByKey(chatListId);
+                    var chatList = messageItem.findChildByKey(chatListId);
                     if (chatList) {
                         chatList.addItemData(data);
                         chatList.scrollBottom();
@@ -151,7 +154,7 @@ define(function(require) {
                 var messageItem = thisCom.getItemByKey(customerId);
                 if (messageItem) {
                     var chatListId = customerId + '-chat-message-list';
-                    var chatList = messageItem.findByKey(chatListId);
+                    var chatList = messageItem.findChildByKey(chatListId);
                     if (chatList) {
                         chatList.addItemData(data);
                         chatList.scrollBottom();
@@ -162,7 +165,6 @@ define(function(require) {
         //
         var sendButton = thisModule.findByKey('send-button');
         _event.bind(sendButton, 'click', function(thisCom) {
-            var chatForm = thisModule.findByKey('chat-form');
             var msg = chatForm.getData();
             msg.act = 'SEND_MESSAGE_FROM_RECEPTION';
             _message.send(msg);
@@ -171,16 +173,16 @@ define(function(require) {
         //
         var finishButton = thisModule.findByKey('finish-button');
         _event.bind(finishButton, 'click', function(thisCom) {
-            var chatForm = thisModule.findByKey('chat-form');
             var data = chatForm.getData();
-            var customerItem = customerList.getItemByKey(data.receiveId);
+            var customerItem = customerList.getItemByKey(data.customerId);
             if (customerItem.$this.hasClass('online')) {
                 var operateInfo = thisModule.findByKey('operate-info');
                 operateInfo.setLabel('正在与该玩家通话中,不能关闭聊天窗口.');
             } else {
                 customerItem.remove();
-                var messageItem = messageList.getItemByKey(data.receiveId);
+                var messageItem = messageList.getItemByKey(data.customerId);
                 messageItem.remove();
+                customerList.firstChild.$this.click();
             }
         });
         //

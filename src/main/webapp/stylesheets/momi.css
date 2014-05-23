@@ -561,10 +561,69 @@ textarea {
     border-bottom: 1px solid #e2e2e2;
 }
 
+.message_list > .list_item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: #f8f8f9;
+}
+
+.message_list .chat_message_list {
+    height: 415px;
+    border: none;
+}
+
+.chat_title {
+    position: relative;
+    padding: 3px 5px 0px 5px;
+    border-bottom: 1px solid #e2e2e2;
+    color: #000000;
+    font-weight: bold;
+    background-color: #f8f8f9;
+}
+
 .customer_list {
     width: 230px;
     height: 600px;
     border-right: 1px solid #e2e2e2;
+}
+
+.customer_list > .list_header {
+    position: relative;
+    padding: 3px 5px 0px 5px;
+    border-bottom: 1px solid #e2e2e2;
+    color: #000000;
+    font-weight: bold;
+    background-color: #f8f8f9;
+}
+
+.customer_list > .list_item {
+    position: relative;
+    padding: 3px 5px 0px 5px;
+    border-bottom: 1px solid #e2e2e2;
+    color: #000000;
+    background-color: #f8f8f9;
+}
+
+.customer_list > .list_item:hover,  .customer_list > .list_item.selected{
+    background-color: #F1EDED;
+}
+
+.customer_list .customer_state {
+    position: absolute;
+    right: 3px;
+    top: 0;
+    margin: 7px;
+    padding: 6px;
+    border-radius: 3px;
+    background-color: #D1D1D1;
+}
+
+.online > .customer_state {
+    background-color: green;
 }
 
 .reception_tools > .common_button{
