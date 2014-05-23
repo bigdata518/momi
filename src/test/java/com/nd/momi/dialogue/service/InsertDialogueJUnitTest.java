@@ -7,21 +7,22 @@ import com.nd.momi.AbstractMomiTest;
 import com.nd.momi.config.ActionNames;
 import com.wolf.framework.config.DefaultResponseFlags;
 import com.wolf.framework.worker.context.Response;
-import java.util.HashMap;
-import java.util.Map;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author cy
  *
  */
 
-public class CustomerFinishDialogueJUnitTest extends AbstractMomiTest {
+public class InsertDialogueJUnitTest extends AbstractMomiTest {
 
-    public CustomerFinishDialogueJUnitTest() {
+    public InsertDialogueJUnitTest() {
     }
 
     @Before
@@ -33,13 +34,14 @@ public class CustomerFinishDialogueJUnitTest extends AbstractMomiTest {
     }
     //
 
-   // @Test
+    @Test
     public void test() {
         this.setCustomerSession("1158174740");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         parameterMap.put("customerId", "1158174740");
         parameterMap.put("receptionId", "2258174740");
-        Response response = this.testHandler.execute(ActionNames.CUSTOMER_FINISH_DIALOGUE, parameterMap);
+        parameterMap.put("gameId", "1");
+        Response response = this.testHandler.execute(ActionNames.INSERT_DIALOGUE, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
     }

@@ -30,6 +30,12 @@ public class ActionNames {
     public final static String RECEPTION_LEAVE = "RECEPTION_LEAVE";
     //客服回岗
     public final static String RECEPTION_COMEBACK = "RECEPTION_COMEBACK";
+    //客服强制结束对话
+    public final static String RECEPTION_FINISH_DIALOGUE = "RECEPTION_FINISH_DIALOGUE";
+    //当前服务的玩家列表显示
+    public final static String CUSTOMER_LIST = "CUSTOMER_LIST";
+    //插入对话
+    public final static String INSERT_DIALOGUE = "INSERT_DIALOGUE";
     //----------------------------客户接口---------------------------//
     //随机查询
     public final static String INQUIRE_CUSTOMER = "INQUIRE_CUSTOMER";

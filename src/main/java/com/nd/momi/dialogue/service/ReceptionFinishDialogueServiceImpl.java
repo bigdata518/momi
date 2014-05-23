@@ -20,13 +20,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author cy
+ * @author Alex
  *
  */
 @ServiceConfig(
-        actionName = ActionNames.CUSTOMER_FINISH_DIALOGUE,
+        actionName = ActionNames.RECEPTION_FINISH_DIALOGUE,
         requestConfigs = {
-                @RequestConfig(name = "receptionId", typeEnum = TypeEnum.CHAR_32, desc = "客服id")
+                @RequestConfig(name = "customerId", typeEnum = TypeEnum.CHAR_32, desc = "客户id")
         },
         responseConfigs = {
                 @ResponseConfig(name = "receptionId", typeEnum = TypeEnum.CHAR_32, desc = "客服id"),
@@ -34,32 +34,30 @@ import java.util.Map;
         },
         validateSession = true,
         response = true,
-        group = ActionGroupNames.CUSTOMER,
-        description = "客户接通客服后结束对话，结束对话类型有4种")
+        group = ActionGroupNames.RECEPTION,
+        description = "客服强制结束与玩家的对话")
 
-public class CustomerFinishDialogueServiceImpl implements Service {
+public class ReceptionFinishDialogueServiceImpl implements Service {
 
     @InjectLocalService()
     private DialogueLocalService dialogueLocalService;
 
     @Override
     public void execute(MessageContext messageContext) {
-
         Map<String, String> parameterMap = messageContext.getParameterMap();
         String sid = messageContext.getSession().getSid();
-        String customerId = SessionUtils.getCustomerIdFromSessionId(sid);
-        String receptionId = parameterMap.get("receptionId");
+        String receptionId = SessionUtils.getReceptionIdFromSessionId(sid);
+        String customerId = parameterMap.get("customerId");
         DialogueEntity dialogueEntity = this.dialogueLocalService.inquireDialogueByCustomerId(customerId);
         this.dialogueLocalService.deleteDialogue(customerId);
         this.dialogueLocalService.insertDialogueHistory(dialogueEntity.toMap());
-        parameterMap.put("customerId",customerId);
+        parameterMap.put("receptionId",receptionId);
         messageContext.setMapData(parameterMap);
-        String serviceSid = SessionUtils.createReceptionSessionId(receptionId);
+        String customerSid = SessionUtils.createCustomerSessionId(customerId);
         messageContext.success();
         // 消息推送
         String responseMessage = messageContext.getResponseMessage();
-        messageContext.push(serviceSid, responseMessage);
-
+        messageContext.push(customerSid, responseMessage);
     }
 }
 

@@ -36,6 +36,9 @@ public class TableNames {
     //对话表
     public final static String DIALOGUE = "DIALOGUE";
     public final static int DIALOGUE_INDEX = 10;
+    //历史对话表
+    public final static String DIALOGUE_HISTORY = "DIALOGUE_HISTORY";
+    public final static int DIALOGUE_HISTORY_INDEX = 11;
 
 
 }
