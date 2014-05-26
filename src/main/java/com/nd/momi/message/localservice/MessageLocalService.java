@@ -2,6 +2,7 @@ package com.nd.momi.message.localservice;
 
 import com.nd.momi.message.entity.MessageEntity;
 import com.wolf.framework.local.Local;
+
 import java.util.List;
 
 /**

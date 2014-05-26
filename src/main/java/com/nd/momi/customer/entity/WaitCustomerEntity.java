@@ -5,6 +5,7 @@ import com.wolf.framework.dao.Entity;
 import com.wolf.framework.dao.annotation.ColumnTypeEnum;
 import com.wolf.framework.dao.annotation.RColumnConfig;
 import com.wolf.framework.dao.annotation.RDaoConfig;
+
 import java.util.HashMap;
 import java.util.Map;
 

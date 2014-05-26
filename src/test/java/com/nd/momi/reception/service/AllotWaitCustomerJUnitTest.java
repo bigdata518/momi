@@ -2,9 +2,7 @@ package com.nd.momi.reception.service;
 
 import com.nd.momi.AbstractMomiTest;
 import com.nd.momi.config.ActionNames;
-import com.nd.momi.reception.localservice.ReceptionLocalService;
 import com.wolf.framework.config.DefaultResponseFlags;
-import com.wolf.framework.utils.SecurityUtils;
 import com.wolf.framework.worker.context.Response;
 import junit.framework.Assert;
 import org.junit.After;

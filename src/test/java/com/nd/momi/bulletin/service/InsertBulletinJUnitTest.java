@@ -1,8 +1,8 @@
 package com.nd.momi.bulletin.service;
 
 import com.nd.momi.AbstractMomiTest;
-import com.nd.momi.config.ActionNames;
 import com.nd.momi.bulletin.entity.BulletinType;
+import com.nd.momi.config.ActionNames;
 import com.wolf.framework.config.DefaultResponseFlags;
 import com.wolf.framework.worker.context.Response;
 import junit.framework.Assert;

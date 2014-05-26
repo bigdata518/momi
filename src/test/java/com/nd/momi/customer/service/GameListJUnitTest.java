@@ -2,8 +2,6 @@
  * GAME_LIST 游戏显示接口测试
  */
 package com.nd.momi.customer.service;
-import java.util.HashMap;
-import java.util.Map;
 
 import com.nd.momi.AbstractMomiTest;
 import com.nd.momi.config.ActionNames;
@@ -13,6 +11,9 @@ import junit.framework.Assert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author cy

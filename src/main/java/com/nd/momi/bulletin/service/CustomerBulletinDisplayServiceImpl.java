@@ -1,10 +1,10 @@
 package com.nd.momi.bulletin.service;
 
 import com.nd.momi.bulletin.entity.BulletinEntity;
+import com.nd.momi.bulletin.entity.BulletinType;
 import com.nd.momi.bulletin.localservice.BulletinLocalService;
 import com.nd.momi.config.ActionGroupNames;
 import com.nd.momi.config.ActionNames;
-import com.nd.momi.bulletin.entity.BulletinType;
 import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
 import com.wolf.framework.service.Service;
@@ -20,7 +20,7 @@ import com.wolf.framework.worker.context.MessageContext;
         actionName = ActionNames.CUSTOMER_BULLETIN_DISPLAY,
         responseConfigs = {
     @ResponseConfig(name = "title", typeEnum = TypeEnum.CHAR_32, desc = "标题"),
-    @ResponseConfig(name = "content", typeEnum = TypeEnum.CHAR_32, desc = "公告内容")
+    @ResponseConfig(name = "content", typeEnum = TypeEnum.CHAR_4000, desc = "公告内容")
 },
         validateSession = true,
         response = true,
