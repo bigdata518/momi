@@ -20,7 +20,7 @@ import com.wolf.framework.worker.context.MessageContext;
         actionName = ActionNames.RECEPTION_BULLETIN_DISPLAY,
         responseConfigs = {
     @ResponseConfig(name = "title", typeEnum = TypeEnum.CHAR_32, desc = "标题"),
-    @ResponseConfig(name = "content", typeEnum = TypeEnum.CHAR_32, desc = "公告内容")
+    @ResponseConfig(name = "content", typeEnum = TypeEnum.CHAR_4000, desc = "公告内容")
 },
         validateSession = true,
         response = true,

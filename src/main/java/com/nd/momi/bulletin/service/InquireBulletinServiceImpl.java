@@ -21,7 +21,7 @@ import java.util.List;
         responseConfigs = {
                 @ResponseConfig(name = "bulletinType", typeEnum = TypeEnum.CHAR_32, desc = "公告类型"),
                 @ResponseConfig(name = "title", typeEnum = TypeEnum.CHAR_32, desc = "标题"),
-                @ResponseConfig(name = "content", typeEnum = TypeEnum.CHAR_32, desc = "公告内容"),
+                @ResponseConfig(name = "content", typeEnum = TypeEnum.CHAR_4000, desc = "公告内容"),
                 @ResponseConfig(name = "createTime", typeEnum = TypeEnum.DATE_TIME, desc = "创建时间")
         },
         validateSession = true,
