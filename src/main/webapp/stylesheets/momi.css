@@ -462,6 +462,11 @@ textarea {
     width: 100%;
 }
 
+.panel_background {
+    background: #f2f2f2;
+    height: 500px;
+}
+
 .button_tools {
     color: #fff;
     padding: 6px 10px;
@@ -630,4 +635,23 @@ textarea {
     width: 100px;
     float: right;
     margin-right: 20px;
+}
+
+.bulletin_form {
+    width: 800px;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #E6E4E4;
+    border-radius: 3px;
+    background: #fff;
+}
+
+.bulletin_form textarea {
+    width: 98%;
+    height: 75px;
+}
+
+.bulletin_form .common_button {
+    width: 120px;
+    margin: 0 auto;
 }
