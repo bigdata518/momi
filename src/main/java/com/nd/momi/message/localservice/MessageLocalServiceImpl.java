@@ -8,6 +8,7 @@ import com.wolf.framework.dao.annotation.InjectRDao;
 import com.wolf.framework.dao.condition.InquireIndexPageContext;
 import com.wolf.framework.local.InjectLocalService;
 import com.wolf.framework.local.LocalServiceConfig;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

@@ -6,9 +6,10 @@ import com.wolf.framework.context.ApplicationContext;
 import com.wolf.framework.session.Session;
 import com.wolf.framework.session.SessionImpl;
 import com.wolf.framework.test.TestHandler;
+import org.junit.AfterClass;
+
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.AfterClass;
 
 /**
  *

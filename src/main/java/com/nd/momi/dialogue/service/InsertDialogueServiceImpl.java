@@ -5,15 +5,12 @@ package com.nd.momi.dialogue.service;
 
 import com.nd.momi.config.ActionGroupNames;
 import com.nd.momi.config.ActionNames;
-import com.nd.momi.dialogue.entity.DialogueEntity;
 import com.nd.momi.dialogue.localservice.DialogueLocalService;
-import com.nd.momi.utils.SessionUtils;
 import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
 import com.wolf.framework.service.Service;
 import com.wolf.framework.service.ServiceConfig;
 import com.wolf.framework.service.parameter.RequestConfig;
-import com.wolf.framework.service.parameter.ResponseConfig;
 import com.wolf.framework.worker.context.MessageContext;
 
 import java.util.Map;

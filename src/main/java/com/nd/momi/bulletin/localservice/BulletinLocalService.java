@@ -1,8 +1,6 @@
 package com.nd.momi.bulletin.localservice;
 
 import com.nd.momi.bulletin.entity.BulletinEntity;
-import com.nd.momi.customer.entity.CustomerEntity;
-import com.nd.momi.customer.entity.WaitCustomerEntity;
 import com.wolf.framework.local.Local;
 
 import java.util.List;

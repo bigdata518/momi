@@ -1,10 +1,10 @@
 package com.nd.momi.bulletin.service;
 
 import com.nd.momi.bulletin.entity.BulletinEntity;
+import com.nd.momi.bulletin.entity.BulletinType;
 import com.nd.momi.bulletin.localservice.BulletinLocalService;
 import com.nd.momi.config.ActionGroupNames;
 import com.nd.momi.config.ActionNames;
-import com.nd.momi.bulletin.entity.BulletinType;
 import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
 import com.wolf.framework.service.Service;

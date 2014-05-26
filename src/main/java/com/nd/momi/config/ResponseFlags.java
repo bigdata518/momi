@@ -2,7 +2,7 @@ package com.nd.momi.config;
 
 /**
  *
- * @author jianying9
+ * @author cy
  */
 public class ResponseFlags {
 
@@ -14,4 +14,6 @@ public class ResponseFlags {
     public final static String FAILURE_ID_USED = "FAILURE_ID_USED";
     //游戏不存在
     public final static String FAILURE_NO_GAME = "FAILURE_NO_GAME";
+    //提交的数据异常
+    public final static String FAILURE_ERROR_DATA = "FAILURE_ERROR_DATA";
 }
