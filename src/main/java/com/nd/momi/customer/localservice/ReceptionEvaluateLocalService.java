@@ -14,8 +14,6 @@ import java.util.List;
 public interface ReceptionEvaluateLocalService extends Local{
     //客服评价无返回参数
     public void insertReceptionEvaluate(String customerId, String receptionId, int score, String receptionQuality, String problemSolve, String suggestion);
-    //客服评价有返回参数
-//    public ReceptionEvaluateEntity insertAndInquireReceptionEvaluate(String customerId, String receptionId, int score, String receptionQuality, String problemSolve, String suggestion);
 
     public void deleteReceptionEvaluate(String evaluateId);
 

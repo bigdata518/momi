@@ -47,8 +47,6 @@ public class ActionNames {
     public final static String CUSTOMER_WAIT = "CUSTOMER_WAIT";
     //客户评价客服借口
     public final static String CUSTOMER_EVALUATE_RECEPTION = "CUSTOMER_EVALUATE_RECEPTION";
-    //获取评价
-    public final static String CUSTOMER_EVALUATE_RECEPTION2 = "CUSTOMER_EVALUATE_RECEPTION2";
     //玩家正常关闭接口
     public final static String CUSTOMER_FINISH_DIALOGUE = "CUSTOMER_FINISH_DIALOGUE";
     //游戏显示接口

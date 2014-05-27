@@ -40,7 +40,8 @@ public class CustomerEvaluateReceptionServiceImpl implements Service {
     public void execute(MessageContext messageContext) {
         // 获取输入参数 RequestConfig
         Map<String, String> parameterMap = messageContext.getParameterMap();
-        String customerId = parameterMap.get("customerId");
+        String sid = messageContext.getSession().getSid();
+        String customerId = SessionUtils.getCustomerIdFromSessionId(sid);
 
         String receptionId = parameterMap.get("receptionId");
         String suggestion = parameterMap.get("suggestion");
@@ -57,8 +58,8 @@ public class CustomerEvaluateReceptionServiceImpl implements Service {
             }
 
             this.receptionEvaluateLocalService.insertReceptionEvaluate(
-            customerId, receptionId, score, receptionQuality,
-            problemSolve, suggestion);
+                    customerId, receptionId, score, receptionQuality,
+                    problemSolve, suggestion);
             String serviceSid = SessionUtils
                     .createReceptionSessionId(receptionId);
             messageContext.success();
