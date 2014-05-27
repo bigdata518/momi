@@ -21,7 +21,7 @@ public interface CustomerLocalService extends Local {
 
     public long countWaitCustomerNum();
 
-    public void insertWaitCustomer(String customerId, String customerName, String createTime);
+    public void insertWaitCustomer(String customerId, String customerName, String createTime, String gameId);
     
     public WaitCustomerEntity inquireWaitCustomerById(String customerId);
 

@@ -57,11 +57,12 @@ public class CustomerLocalServiceImpl implements CustomerLocalService {
     }
 
     @Override
-    public void insertWaitCustomer(String customerId, String customerName, String waitOrder) {
+    public void insertWaitCustomer(String customerId, String customerName, String waitOrder, String gameId) {
         Map<String, String> entityMap = new HashMap<String, String>(4, 1);
         entityMap.put("customerId", customerId);
         entityMap.put("customerName", customerName);
         entityMap.put("waitOrder", waitOrder);
+        entityMap.put("gameId", gameId);
         this.customerWaitEntityDao.insert(entityMap);
     }
 

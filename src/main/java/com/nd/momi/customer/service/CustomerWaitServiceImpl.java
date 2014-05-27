@@ -9,6 +9,7 @@ import com.wolf.framework.data.TypeEnum;
 import com.wolf.framework.local.InjectLocalService;
 import com.wolf.framework.service.Service;
 import com.wolf.framework.service.ServiceConfig;
+import com.wolf.framework.service.parameter.RequestConfig;
 import com.wolf.framework.service.parameter.ResponseConfig;
 import com.wolf.framework.worker.context.MessageContext;
 
@@ -21,11 +22,15 @@ import java.util.Map;
  */
 @ServiceConfig(
         actionName = ActionNames.CUSTOMER_WAIT,
+        requestConfigs = {
+    @RequestConfig(name = "gameId", typeEnum = TypeEnum.CHAR_32, desc = "游戏id")
+        },
         responseConfigs = {
     @ResponseConfig(name = "customerId", typeEnum = TypeEnum.CHAR_32, desc = "客户id"),
     @ResponseConfig(name = "customerName", typeEnum = TypeEnum.CHAR_32, desc = "昵称"),
     @ResponseConfig(name = "waitNum", typeEnum = TypeEnum.LONG, desc = "等待人数"),
-    @ResponseConfig(name = "waitOrder", typeEnum = TypeEnum.LONG, desc = "排队序号")
+    @ResponseConfig(name = "waitOrder", typeEnum = TypeEnum.LONG, desc = "排队序号"),
+    @ResponseConfig(name = "gameId", typeEnum = TypeEnum.CHAR_32, desc = "游戏id")
 },
         validateSession = true,
         response = true,
@@ -44,13 +49,15 @@ public class CustomerWaitServiceImpl implements Service {
         String customerName = customerEntity.getCustomerName();
         long waitNum = this.customerLocalService.countWaitCustomerNum();
         String waitOrder = Long.toString(System.currentTimeMillis());
+        String gameId = messageContext.getParameter("gameId");
         //等待队列
-        this.customerLocalService.insertWaitCustomer(customerId, customerName, waitOrder);
-        Map<String, String> resultMap = new HashMap<String, String>(4, 1);
+        this.customerLocalService.insertWaitCustomer(customerId, customerName, waitOrder,gameId);
+        Map<String, String> resultMap = new HashMap<String, String>(8, 1);
         resultMap.put("customerId", customerId);
         resultMap.put("nickName", customerName);
         resultMap.put("waitNum", Long.toString(waitNum));
         resultMap.put("waitOrder", waitOrder);
+        resultMap.put("gameId", gameId);
         messageContext.setMapData(resultMap);
         messageContext.success();
     }

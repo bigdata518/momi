@@ -4,6 +4,7 @@ import com.nd.momi.config.ActionGroupNames;
 import com.nd.momi.config.ActionNames;
 import com.nd.momi.customer.entity.WaitCustomerEntity;
 import com.nd.momi.customer.localservice.CustomerLocalService;
+import com.nd.momi.dialogue.localservice.DialogueLocalService;
 import com.nd.momi.reception.entity.ReceptionStateEntity;
 import com.nd.momi.reception.localservice.ReceptionLocalService;
 import com.nd.momi.utils.SessionUtils;
@@ -31,6 +32,7 @@ import java.util.Map;
     @ResponseConfig(name = "customerId", typeEnum = TypeEnum.CHAR_32, desc = "客户id"),
     @ResponseConfig(name = "customerName", typeEnum = TypeEnum.CHAR_32, desc = "客户昵称"),
     @ResponseConfig(name = "waitOrder", typeEnum = TypeEnum.CHAR_32, desc = "客户昵称"),
+    @ResponseConfig(name = "gameId", typeEnum = TypeEnum.CHAR_32, desc = "游戏id"),
     @ResponseConfig(name = "receptionId", typeEnum = TypeEnum.CHAR_32, desc = "客服id"),
     @ResponseConfig(name = "receptionName", typeEnum = TypeEnum.CHAR_32, desc = "客服昵称"),
     @ResponseConfig(name = "state", typeEnum = TypeEnum.CHAR_32, desc = "调度服务状态:stop-停止,running-运行")
@@ -49,6 +51,9 @@ public class AllotWaitCustomerServiceImpl implements Service {
     //
     @InjectLocalService()
     private CustomerLocalService customerLocalService;
+    //
+    @InjectLocalService()
+    private DialogueLocalService dialogueLocalService;
     //
     @InjectTaskExecutor
     private TaskExecutor taskExecutor;
@@ -110,9 +115,15 @@ public class AllotWaitCustomerServiceImpl implements Service {
                             }
                             waitCustomerEntity = waitCustomerEntityList.get(waitIndex);
                             serviceStateEntity = serviceStateEntityList.get(0);
-                            resultMap.put("receptionId", serviceStateEntity.getReceptionId());
+                            String receptionId = serviceStateEntity.getReceptionId();
+                            String customerId = waitCustomerEntity.getCustomerId();
+                            String gameId = waitCustomerEntity.getGameId();
+                            //插入对话
+                            dialogueLocalService.insertDialogue(customerId,receptionId,gameId);
+                            resultMap.put("receptionId", receptionId);
                             resultMap.put("receptionName", serviceStateEntity.getReceptionName());
-                            resultMap.put("customerId", waitCustomerEntity.getCustomerId());
+                            resultMap.put("customerId", customerId);
+                            resultMap.put("gameId",gameId);
                             resultMap.put("customerName", waitCustomerEntity.getCustomerName());
                             resultMap.put("waitOrder", Long.toString(waitCustomerEntity.getWaitOrder()));
                             this.messageContext.setMapData(resultMap);
@@ -130,10 +141,7 @@ public class AllotWaitCustomerServiceImpl implements Service {
                                 this.messageContext.push(customerSid, responseMessage);
                             }
                             serviceIndex++;
-                            try {
-                                Thread.sleep(1000);
-                            } catch (InterruptedException ex) {
-                            }
+
                         }
                     }
                 }

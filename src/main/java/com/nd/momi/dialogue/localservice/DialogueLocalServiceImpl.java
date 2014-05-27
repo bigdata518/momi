@@ -109,6 +109,8 @@ public class DialogueLocalServiceImpl implements DialogueLocalService {
     @Override
     public List<DialogueEntity> inquireDialoguesByReceptionId(String receptionId) {
         InquireIndexPageContext inquirePageContext = new InquireIndexPageContext("receptionId", receptionId);
+        inquirePageContext.setPageIndex(1);
+        inquirePageContext.setPageSize(20);
         return this.dialogueEntityDao.inquireByIndexDESC(inquirePageContext);
     }
 }
