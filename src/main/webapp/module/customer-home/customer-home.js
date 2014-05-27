@@ -167,6 +167,14 @@ define(function(require) {
             msg.act = 'CUSTOMER_LOGOUT';
             _message.send(msg);
         });
+        //初始化客户公告
+        var customerBulletin = thisModule.findByKey('customer-bulletin');
+        _message.listen(customerBulletin, 'CUSTOMER_BULLETIN_DISPLAY', function(thisCom, msg) {
+            if (msg.flag === 'SUCCESS') {
+                thisCom.setLabel(msg.data.content);
+            }
+        });
+        _message.send({act: 'CUSTOMER_BULLETIN_DISPLAY'});
         //连接
         _message.send({act: 'CUSTOMER_WAIT'});
     };
