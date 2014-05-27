@@ -142,7 +142,6 @@ body {
     width: 700px;
     min-height: 600px;
     position: relative;
-    background: #f2f2f2;
     overflow: hidden;
     border-radius: 3px;
     margin-left: 270px;
@@ -152,13 +151,20 @@ body {
     width: 260px;
     min-height: 600px;
     position: absolute;
-    background: #f2f2f2;
     overflow: hidden;
     border-radius: 3px;
 }
 
 .navigation_list {
 
+}
+
+.box_header {
+    padding: 3px 5px 0px 5px;
+    border-bottom: 1px solid #e2e2e2;
+    color: #000000;
+    font-weight: bold;
+    background-color: #f8f8f9;
 }
 
 .box {
@@ -310,6 +316,11 @@ textarea {
     font-size: 20px;
     text-align: center;
     padding: 3px 0;
+}
+
+.customer_bulletin {
+    height: 440px;
+    overflow: hidden;
 }
 
 .chat_message_list {
@@ -556,13 +567,9 @@ textarea {
     text-align: center;
 }
 
-.message_panel {
-    width: 739px;
-    float: right;
-}
-
 .message_list {
-    height: 440px;
+    min-height: 440px;
+    max-height: 440px;
     border-bottom: 1px solid #e2e2e2;
 }
 
@@ -638,7 +645,8 @@ textarea {
 }
 
 .reception_bulletin {
-    height: 250px;
+    height: 240px;
+    overflow: hidden;
 }
 
 .reception_tools > .common_button{
