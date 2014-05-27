@@ -41,9 +41,9 @@ public class CustomerEvaluateReceptionServiceJUnitTest extends AbstractMomiTest 
         parameterMap.put("customerId", "1158174740");
         parameterMap.put("receptionId", "2258174740");
         parameterMap.put("score", "1");
-        parameterMap.put("receptionQuality", "质量一般");
-        parameterMap.put("problemSolve", "问题已解决");
-        parameterMap.put("suggestion", "希望态度能更好");
+//        parameterMap.put("receptionQuality", "质量一般");
+//        parameterMap.put("problemSolve", "问题已解决");
+//        parameterMap.put("suggestion", "希望态度能更好");
         Response response = this.testHandler.execute(ActionNames.CUSTOMER_EVALUATE_RECEPTION, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);

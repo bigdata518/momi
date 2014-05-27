@@ -52,7 +52,7 @@ public class CustomerEvaluateReceptionServiceImpl implements Service {
 
         // 评价服务得到低分时，进行服务态度和问题解决内容获取
         if (score <= FrontEndConfig.HIGH_SCORE_LIMIT) {
-            if (score <= FrontEndConfig.LOW_SCORE_LIMIT && score >= 0) {
+            if (score <= FrontEndConfig.LOW_SCORE_LIMIT && score > 0) {
                 receptionQuality = parameterMap.get("receptionQuality");
                 problemSolve = parameterMap.get("problemSolve");
             }
