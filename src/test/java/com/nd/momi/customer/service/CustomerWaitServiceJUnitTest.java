@@ -34,6 +34,7 @@ public class CustomerWaitServiceJUnitTest extends AbstractMomiTest {
     public void test() {
         this.setCustomerSession("1158174740");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
+        parameterMap.put("gameId","1");
         Response response = this.testHandler.execute(ActionNames.CUSTOMER_WAIT, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);

@@ -1,6 +1,7 @@
 package com.nd.momi.bulletin.service;
 
 import com.nd.momi.AbstractMomiTest;
+import com.nd.momi.bulletin.entity.BulletinType;
 import com.nd.momi.config.ActionNames;
 import com.wolf.framework.config.DefaultResponseFlags;
 import com.wolf.framework.worker.context.Response;
@@ -35,7 +36,7 @@ public class DeleteBulletinJUnitTest extends AbstractMomiTest {
     public void testReception(){
         this.setReceptionSession("10000");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("bulletinType", "RECEPTION");
+        parameterMap.put("bulletinType", BulletinType.RECEPTION);
         Response response = this.testHandler.execute(ActionNames.DELETE_BULLETIN, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
@@ -45,7 +46,7 @@ public class DeleteBulletinJUnitTest extends AbstractMomiTest {
     public void testCustomer(){
         this.setReceptionSession("10000");
         Map<String, String> parameterMap = new HashMap<String, String>(1, 1);
-        parameterMap.put("bulletinType", "CUSTOMER");
+        parameterMap.put("bulletinType", BulletinType.CUSTOMER);
         Response response = this.testHandler.execute(ActionNames.DELETE_BULLETIN, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);

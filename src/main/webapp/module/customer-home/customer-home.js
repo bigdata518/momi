@@ -176,7 +176,7 @@ define(function(require) {
         });
         _message.send({act: 'CUSTOMER_BULLETIN_DISPLAY'});
         //连接
-        _message.send({act: 'CUSTOMER_WAIT'});
+        _message.send({act: 'CUSTOMER_WAIT', gameId: '10000'});
     };
     return self;
 });

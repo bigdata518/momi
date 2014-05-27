@@ -27,6 +27,9 @@ public final class WaitCustomerEntity extends Entity {
     @RColumnConfig(desc = "排队序号")
     private long waitOrder;
 
+    @RColumnConfig(desc = "游戏id")
+    private String gameId;
+
     public String getCustomerId() {
         return customerId;
     }
@@ -37,6 +40,10 @@ public final class WaitCustomerEntity extends Entity {
 
     public long getWaitOrder() {
         return waitOrder;
+    }
+
+    public String getGameId() {
+        return gameId;
     }
 
     @Override
@@ -50,6 +57,7 @@ public final class WaitCustomerEntity extends Entity {
         map.put("customerId", this.customerId);
         map.put("customerName", this.customerName);
         map.put("waitOrder", Long.toString(this.waitOrder));
+        map.put("gameId", this.gameId);
         return map;
     }
 
@@ -58,5 +66,6 @@ public final class WaitCustomerEntity extends Entity {
         this.customerId = entityMap.get("customerId");
         this.customerName = entityMap.get("customerName");
         this.waitOrder = Long.parseLong(entityMap.get("waitOrder"));
+        this.gameId = entityMap.get("gameId");
     }
 }
