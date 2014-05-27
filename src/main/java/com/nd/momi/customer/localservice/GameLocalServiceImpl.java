@@ -51,6 +51,8 @@ public class GameLocalServiceImpl implements GameLocalService {
     @Override
     public List<GameEntity> getGames() {
         InquirePageContext inquirePageContext = new InquirePageContext();
+        inquirePageContext.setPageIndex(1);
+        inquirePageContext.setPageSize(10);
         return this.gameEntityDao.inquire(inquirePageContext);
     }
 

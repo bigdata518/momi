@@ -51,6 +51,10 @@ public class ActionNames {
     public final static String CUSTOMER_FINISH_DIALOGUE = "CUSTOMER_FINISH_DIALOGUE";
     //游戏显示接口
     public final static String GAME_LIST = "GAME_LIST";
+    //添加游戏接口
+    public final static String INSERT_GAME = "INSERT_GAME";
+    //删除游戏接口
+    public final static String DELETE_GAME = "DELETE_GAME";
     //-----------------------------消息------------------------------//
     //客户发送消息至客服
     public final static String SEND_MESSAGE_FROM_CUSTOMER = "SEND_MESSAGE_FROM_CUSTOMER";
