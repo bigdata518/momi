@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  *
- *
+ * 公告实体
  * @author lgf
  */
 @RDaoConfig(

@@ -14,6 +14,7 @@ import java.util.Map;
 
 
 /**
+ * 当前对话实体
  * @author lgf
  *
  */

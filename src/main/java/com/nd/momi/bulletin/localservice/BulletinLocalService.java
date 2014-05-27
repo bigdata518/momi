@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
+ * 公告服务
  * @author lgf
  */
 public interface BulletinLocalService extends Local {
@@ -19,6 +19,6 @@ public interface BulletinLocalService extends Local {
     public BulletinEntity inquireBulletinByType(String bulletinType);
 
     public void deleteBulletin(String bulletinType);
-    
+
     public List<BulletinEntity> inquireBulletin();
 }
