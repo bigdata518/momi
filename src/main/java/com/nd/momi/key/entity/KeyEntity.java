@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  *
  *
- * @author aladdin
+ * @author jianying9
  */
 @RDaoConfig(
         tableName = TableNames.KEY,

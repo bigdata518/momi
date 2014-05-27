@@ -4,7 +4,7 @@ import com.wolf.framework.local.Local;
 
 /**
  *
- * @author aladdin
+ * @author jianying9
  */
 public interface KeyLocalService extends Local {
 

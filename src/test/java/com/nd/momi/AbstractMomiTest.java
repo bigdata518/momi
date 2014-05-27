@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  *
- * @author aladdin
+ * @author jianying9
  */
 public abstract class AbstractMomiTest {
 
