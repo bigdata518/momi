@@ -244,6 +244,14 @@ define(function(require) {
             document.title = 'im-客服';
             _module.loadModule('', 'reception-login');
         });
+        //初始化客户公告
+        var receptionBulletin = thisModule.findByKey('reception-bulletin');
+        _message.listen(receptionBulletin, 'RECEPTION_BULLETIN_DISPLAY', function(thisCom, msg) {
+            if (msg.flag === 'SUCCESS') {
+                thisCom.setLabel(msg.data.content);
+            }
+        });
+        _message.send({act: 'RECEPTION_BULLETIN_DISPLAY'});
     };
     return self;
 });

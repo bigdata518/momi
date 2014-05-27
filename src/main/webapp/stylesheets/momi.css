@@ -590,10 +590,16 @@ textarea {
     background-color: #f8f8f9;
 }
 
-.customer_list {
+.reception_left_panel {
     width: 230px;
     height: 600px;
     border-right: 1px solid #e2e2e2;
+}
+
+.customer_list {
+    min-height: 350px;
+    max-height: 350px;
+    border-bottom: 1px solid #e2e2e2;
 }
 
 .customer_list > .list_header {
@@ -629,6 +635,10 @@ textarea {
 
 .online > .customer_state {
     background-color: green;
+}
+
+.reception_bulletin {
+    height: 250px;
 }
 
 .reception_tools > .common_button{
