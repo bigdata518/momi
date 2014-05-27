@@ -30,9 +30,9 @@ public class ReceptionLogoutJUnitTest extends AbstractMomiTest {
     }
     //
 
-    @Test
+//    @Test
     public void test() {
-        this.setReceptionSession("271411");
+        this.setReceptionSession("10000");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
         Response response = this.testHandler.execute(ActionNames.RECEPTION_LOGOUT, parameterMap);
         System.out.println(response.getResponseMessage());

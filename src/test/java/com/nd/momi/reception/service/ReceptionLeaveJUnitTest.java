@@ -30,7 +30,7 @@ public class ReceptionLeaveJUnitTest extends AbstractMomiTest {
     }
     //
 
-    @Test
+//    @Test
     public void test() {
         this.setReceptionSession("271411");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);

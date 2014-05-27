@@ -33,7 +33,7 @@ public class ReceptionLoginJUnitTest extends AbstractMomiTest {
     @Test
     public void test() {
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("receptionId", "271411");
+        parameterMap.put("receptionId", "10000");
         Response response = this.testHandler.execute(ActionNames.RECEPTION_LOGIN, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
