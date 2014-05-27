@@ -10,9 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
- *
- * @author aladdin
+ * @author cy
+ * 等待客户队列表
  */
 @RDaoConfig(
         tableName = TableNames.WAIT_CUSTOMER,

@@ -2,7 +2,7 @@ package com.nd.momi.config;
 
 /**
  *
- * @author aladdin
+ * @author jianying9
  */
 public class ActionGroupNames {
 

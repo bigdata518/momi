@@ -10,9 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
- *
- * @author aladdin
+ * @author cy
+ * 客户账号表
  */
 @RDaoConfig(
         tableName = TableNames.CUSTOMER,

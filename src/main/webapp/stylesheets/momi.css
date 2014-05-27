@@ -142,7 +142,6 @@ body {
     width: 700px;
     min-height: 600px;
     position: relative;
-    background: #f2f2f2;
     overflow: hidden;
     border-radius: 3px;
     margin-left: 270px;
@@ -152,13 +151,20 @@ body {
     width: 260px;
     min-height: 600px;
     position: absolute;
-    background: #f2f2f2;
     overflow: hidden;
     border-radius: 3px;
 }
 
 .navigation_list {
 
+}
+
+.box_header {
+    padding: 3px 5px 0px 5px;
+    border-bottom: 1px solid #e2e2e2;
+    color: #000000;
+    font-weight: bold;
+    background-color: #f8f8f9;
 }
 
 .box {
@@ -312,6 +318,11 @@ textarea {
     padding: 3px 0;
 }
 
+.customer_bulletin {
+    height: 440px;
+    overflow: hidden;
+}
+
 .chat_message_list {
     padding: 0 15px;
     height: 448px;
@@ -462,6 +473,11 @@ textarea {
     width: 100%;
 }
 
+.panel_background {
+    background: #f2f2f2;
+    height: 500px;
+}
+
 .button_tools {
     color: #fff;
     padding: 6px 10px;
@@ -551,13 +567,9 @@ textarea {
     text-align: center;
 }
 
-.message_panel {
-    width: 739px;
-    float: right;
-}
-
 .message_list {
-    height: 440px;
+    min-height: 440px;
+    max-height: 440px;
     border-bottom: 1px solid #e2e2e2;
 }
 
@@ -585,10 +597,16 @@ textarea {
     background-color: #f8f8f9;
 }
 
-.customer_list {
+.reception_left_panel {
     width: 230px;
     height: 600px;
     border-right: 1px solid #e2e2e2;
+}
+
+.customer_list {
+    min-height: 350px;
+    max-height: 350px;
+    border-bottom: 1px solid #e2e2e2;
 }
 
 .customer_list > .list_header {
@@ -626,8 +644,32 @@ textarea {
     background-color: green;
 }
 
+.reception_bulletin {
+    height: 240px;
+    overflow: hidden;
+}
+
 .reception_tools > .common_button{
     width: 100px;
     float: right;
     margin-right: 20px;
+}
+
+.bulletin_form {
+    width: 800px;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid #E6E4E4;
+    border-radius: 3px;
+    background: #fff;
+}
+
+.bulletin_form textarea {
+    width: 98%;
+    height: 75px;
+}
+
+.bulletin_form .common_button {
+    width: 120px;
+    margin: 0 auto;
 }

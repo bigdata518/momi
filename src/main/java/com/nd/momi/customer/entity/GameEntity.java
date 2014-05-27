@@ -10,7 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by cy on 2014/5/20.
+ * @author cy
+ * 游戏选择表
  */
 @RDaoConfig(
         tableName = TableNames.GAME,

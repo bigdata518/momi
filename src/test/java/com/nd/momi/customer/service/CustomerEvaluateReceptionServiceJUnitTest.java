@@ -35,7 +35,7 @@ public class CustomerEvaluateReceptionServiceJUnitTest extends AbstractMomiTest 
 
     @Test
     public void test() {
-        //测试案例1
+        //测试案例1,正常案例
         this.setCustomerSession("1158174740");
         Map<String, String> parameterMap = new HashMap<String, String>(6, 1);
         parameterMap.put("customerId", "1158174740");
@@ -47,7 +47,7 @@ public class CustomerEvaluateReceptionServiceJUnitTest extends AbstractMomiTest 
         Response response = this.testHandler.execute(ActionNames.CUSTOMER_EVALUATE_RECEPTION, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
-        //测试案例2
+        //测试案例2，score大于3为不合法数据
         this.setCustomerSession("10");
         Map<String, String> parameterMap1 = new HashMap<String, String>(6, 1);
         parameterMap1.put("customerId", "10");
