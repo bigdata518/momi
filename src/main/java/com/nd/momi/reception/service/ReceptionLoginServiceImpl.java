@@ -4,6 +4,7 @@ import com.nd.momi.config.ActionGroupNames;
 import com.nd.momi.config.ActionNames;
 import com.nd.momi.config.ResponseFlags;
 import com.nd.momi.reception.entity.ReceptionEntity;
+import com.nd.momi.reception.entity.ReceptionTypeEnum;
 import com.nd.momi.reception.localservice.ReceptionLocalService;
 import com.nd.momi.utils.SessionUtils;
 import com.wolf.framework.data.TypeEnum;
@@ -52,7 +53,10 @@ public class ReceptionLoginServiceImpl implements Service {
             messageContext.setEntityData(serviceEntity);
             messageContext.success();
             //记录登录状态
-            this.receptionLocalService.onService(serviceEntity);
+            //管理员不需要进入服务状态
+            if(!serviceEntity.getType().equals(ReceptionTypeEnum.ADMIN)){
+                this.receptionLocalService.offService(serviceEntity.getReceptionId(),"首次登陆");
+            }
         } else {
             messageContext.setFlag(ResponseFlags.FAILURE_ID_NOT_EXIST);
         }
