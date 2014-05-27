@@ -44,6 +44,7 @@ public class InsertGameServiceImpl implements Service {
         Map<String,String> parameterMap = messageContext.getParameterMap();
         String gameName = parameterMap.get("gameName");
         this.gameLocalService.insertGame(gameName);
+        messageContext.setMapData(parameterMap);
         messageContext.success();
         }
     }
