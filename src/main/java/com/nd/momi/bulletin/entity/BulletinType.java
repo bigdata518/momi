@@ -1,7 +1,7 @@
 package com.nd.momi.bulletin.entity;
 
 /**
- *
+ * 公告类型
  * @author lgf
  */
 public class BulletinType {

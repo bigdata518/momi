@@ -1,7 +1,7 @@
 package com.nd.momi.dialogue.entity;
 
 /**
- *
+ * 对话结束状态
  * @author lgf
  */
 public class DialogueEndState {

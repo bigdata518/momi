@@ -49,10 +49,14 @@ public class CustomerFinishDialogueServiceImpl implements Service {
         String sid = messageContext.getSession().getSid();
         String customerId = SessionUtils.getCustomerIdFromSessionId(sid);
         String receptionId = parameterMap.get("receptionId");
+        //根据customerId查询当前对话实体
         DialogueEntity dialogueEntity = this.dialogueLocalService.inquireDialogueByCustomerId(customerId);
+        //将当前对话删除
         this.dialogueLocalService.deleteDialogue(customerId);
         Map<String,String> map = dialogueEntity.toMap();
+        //将状态置为正常结束
         map.put("state", DialogueEndState.NORMAL_END);
+        //将记录插入到历史对话表
         this.dialogueLocalService.insertDialogueHistory(map);
         parameterMap.put("customerId",customerId);
         messageContext.setMapData(parameterMap);

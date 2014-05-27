@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 历史对话实体
  * Created by lgf on 2014/5/23.
  */
 @RDaoConfig(
