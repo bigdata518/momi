@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.nd.momi.customer.localservice;
 
 import com.nd.momi.config.TableNames;
@@ -17,7 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author Alex
+ * @author cy
+ * 服务评价接口
  *
  */
 
@@ -57,9 +55,9 @@ public class ReceptionEvaluateLocalServiceImpl implements
      */
     @Override
     public void insertReceptionEvaluate(final String customerId,
-                                        final String receptionId, final int score,
-                                        final String receptionQuality, final String problemSolve,
-                                        final String suggestion) {
+        final String receptionId, final int score,
+        final String receptionQuality, final String problemSolve,
+        final String suggestion) {
         final long evaluateId = this.nextEvaluateId();
         Map<String, String> entityMap = new HashMap<String, String>(8, 1);
         entityMap.put("evaluateId", String.valueOf(evaluateId));

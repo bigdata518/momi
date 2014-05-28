@@ -37,7 +37,7 @@ public class DeleteGameJUnitTest extends AbstractMomiTest {
     public void test() {
         this.setCustomerSession("1");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("gameId", "5");
+        parameterMap.put("gameId", "17");
         Response response = this.testHandler.execute(ActionNames.DELETE_GAME,parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
