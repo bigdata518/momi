@@ -55,11 +55,12 @@ define(function(require) {
             itemClazz: 'online',
             itemDataToHtml: function(itemData) {
                 var result = '<div>' + itemData.customerName + '</div>'
-                        + '<div class="customer_state"></div>';
-
+                        + '<div class="customer_state"></div>'
+                        + '<div id="' + itemData.customerId + '-close-button"class="button customer_close"></div>';
                 return result;
             },
             itemCompleted: function(itemCom) {
+                //玩家列表item点击事件
                 _event.bind(itemCom, 'click', function(thisCom) {
                     var customerId = thisCom.key;
                     thisCom.selected();
@@ -73,6 +74,16 @@ define(function(require) {
                     chatList.initScroll();
                     //
                     chatForm.setData('customerId', customerId);
+                });
+                //item的close按钮点击事件
+                var closeButtonId = itemCom.key + '-close-button';
+                var closeButton = itemCom.findChildByKey(closeButtonId);
+                _event.bind(closeButton, 'click', function(thisCom) {
+                    var customerItem = thisCom.parent;
+                    customerItem.remove();
+                    var messageItem = messageList.getItemByKey(customerItem.key);
+                    messageItem.remove();
+                    customerList.firstChild.$this.click();
                 });
             }
         });
@@ -171,20 +182,20 @@ define(function(require) {
             chatForm.setData('message', '');
         });
         //
-        var finishButton = thisModule.findByKey('finish-button');
-        _event.bind(finishButton, 'click', function(thisCom) {
-            var data = chatForm.getData();
-            var customerItem = customerList.getItemByKey(data.customerId);
-            if (customerItem.$this.hasClass('online')) {
-                var operateInfo = thisModule.findByKey('operate-info');
-                operateInfo.setLabel('正在与该玩家通话中,不能关闭聊天窗口.');
-            } else {
-                customerItem.remove();
-                var messageItem = messageList.getItemByKey(data.customerId);
-                messageItem.remove();
-                customerList.firstChild.$this.click();
-            }
-        });
+//        var finishButton = thisModule.findByKey('finish-button');
+//        _event.bind(finishButton, 'click', function(thisCom) {
+//            var data = chatForm.getData();
+//            var customerItem = customerList.getItemByKey(data.customerId);
+//            if (customerItem.$this.hasClass('online')) {
+//                var operateInfo = thisModule.findByKey('operate-info');
+//                operateInfo.setLabel('正在与该玩家通话中,不能关闭聊天窗口.');
+//            } else {
+//                customerItem.remove();
+//                var messageItem = messageList.getItemByKey(data.customerId);
+//                messageItem.remove();
+//                customerList.firstChild.$this.click();
+//            }
+//        });
         //
         var logoutButton = thisModule.findByKey('logout-button');
         _event.bind(logoutButton, 'click', function(thisCom) {
@@ -252,6 +263,8 @@ define(function(require) {
             }
         });
         _message.send({act: 'RECEPTION_BULLETIN_DISPLAY'});
+        //页面初始化完成，切换客服为服务状态
+        _message.send({act: 'RECEPTION_COMEBACK'});
     };
     return self;
 });

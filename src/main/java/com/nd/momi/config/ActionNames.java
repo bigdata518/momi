@@ -12,8 +12,6 @@ public class ActionNames {
     //根据imageId查询图片数据
     public final static String INQUIRE_IMAGE_BY_KEY = "INQUIRE_IMAGE_BY_KEY";
     //-----------------------客服用户接口------------------------//
-    //管理员登录
-    public final static String ADMIN_LOGIN = "ADMIN_LOGIN";
     //普通用户登录
     public final static String RECEPTION_LOGIN = "RECEPTION_LOGIN";
     //登出
