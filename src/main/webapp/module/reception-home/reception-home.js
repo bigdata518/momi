@@ -83,7 +83,9 @@ define(function(require) {
                     customerItem.remove();
                     var messageItem = messageList.getItemByKey(customerItem.key);
                     messageItem.remove();
-                    customerList.firstChild.$this.click();
+                    if (customerList.firstChild) {
+                        customerList.firstChild.$this.click();
+                    }
                 });
             }
         });
@@ -181,21 +183,27 @@ define(function(require) {
             _message.send(msg);
             chatForm.setData('message', '');
         });
-        //
-//        var finishButton = thisModule.findByKey('finish-button');
-//        _event.bind(finishButton, 'click', function(thisCom) {
-//            var data = chatForm.getData();
-//            var customerItem = customerList.getItemByKey(data.customerId);
-//            if (customerItem.$this.hasClass('online')) {
-//                var operateInfo = thisModule.findByKey('operate-info');
-//                operateInfo.setLabel('正在与该玩家通话中,不能关闭聊天窗口.');
-//            } else {
-//                customerItem.remove();
-//                var messageItem = messageList.getItemByKey(data.customerId);
-//                messageItem.remove();
-//                customerList.firstChild.$this.click();
-//            }
-//        });
+        //强制关闭与客户的对话
+        var forceFinishButton = thisModule.findByKey('force-finish-button');
+        _event.bind(forceFinishButton, 'click', function(thisCom) {
+            var data = chatForm.getData();
+            _message.send({
+                act: 'RECEPTION_FINISH_DIALOGUE',
+                customerId: data.customerId
+            });
+        });
+        _message.listen(forceFinishButton, 'RECEPTION_FINISH_DIALOGUE', function(thisCom, msg) {
+            if (msg.flag === 'SUCCESS') {
+                var data = msg.data;
+                var customerItem = customerList.getItemByKey(data.customerId);
+                customerItem.remove();
+                var messageItem = messageList.getItemByKey(data.customerId);
+                messageItem.remove();
+                if (customerList.firstChild) {
+                    customerList.firstChild.$this.click();
+                }
+            }
+        });
         //
         var logoutButton = thisModule.findByKey('logout-button');
         _event.bind(logoutButton, 'click', function(thisCom) {

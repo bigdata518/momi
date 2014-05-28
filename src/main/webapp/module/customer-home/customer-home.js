@@ -167,6 +167,16 @@ define(function(require) {
             msg.act = 'CUSTOMER_LOGOUT';
             _message.send(msg);
         });
+        //客服强制关闭聊天消息
+        _message.listen(thisModule, 'RECEPTION_FINISH_DIALOGUE', function(thisCom, msg) {
+            if (msg.flag === 'SUCCESS') {
+                _yy.clearSession();
+                thisModule.hide();
+                thisModule.remove();
+                document.title = 'im-玩家';
+                _module.loadModule('customer-login');
+            }
+        });
         //初始化客户公告
         var customerBulletin = thisModule.findByKey('customer-bulletin');
         _message.listen(customerBulletin, 'CUSTOMER_BULLETIN_DISPLAY', function(thisCom, msg) {

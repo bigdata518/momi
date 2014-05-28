@@ -547,6 +547,14 @@ define(function(require) {
                     _components._message.remove(this);
                     delete this.parent.children[this.id];
                     this.$this.remove();
+                    //重新判断父节点的firstChild
+                    if(this.parent.firstChild === this) {
+                        this.parent.firstChild = null;
+                        for (var id in this.parent.children) {
+                            this.parent.firstChild = this.parent.children[id];
+                            break;
+                        }
+                    }
                 };
                 //修改parent的firstChild
                 if (!parent.firstChild) {
