@@ -30,7 +30,6 @@ import java.util.Map;
 },
         responseConfigs = {
     @ResponseConfig(name = "customerId", typeEnum = TypeEnum.CHAR_32, desc = "客户id"),
-    @ResponseConfig(name = "receptionId", typeEnum = TypeEnum.CHAR_32, desc = "客服id"),
     @ResponseConfig(name = "waitOrder", typeEnum = TypeEnum.LONG, desc = "客户排队序号")
 },
         validateSession = true,
@@ -51,11 +50,9 @@ public class CustomerLogoutServiceImpl implements Service {
         String receptionId = messageContext.getParameter("receptionId");
         Map<String, String> resultMap = new HashMap<String, String>(2, 1);
         resultMap.put("customerId", customerId);
-        resultMap.put("receptionId", receptionId);
-        resultMap.put("waitOrder", "-1");
         messageContext.setMapData(resultMap);
         messageContext.success();
-        if (receptionId.equals("-1") == true) {
+        if (receptionId.equals("-1")) {
             //还未分配客服人员
             //判断是否在等待队列
             String waitOrder = messageContext.getParameter("waitOrder");
@@ -73,11 +70,6 @@ public class CustomerLogoutServiceImpl implements Service {
                     }
                 }
             }
-        } else {
-            //通知客服，当前客户退出
-            String serviceSid = SessionUtils.createReceptionSessionId(receptionId);
-            String message = messageContext.getResponseMessage();
-            messageContext.push(serviceSid, message);
         }
     }
 }

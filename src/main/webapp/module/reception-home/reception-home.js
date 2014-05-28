@@ -117,14 +117,14 @@ define(function(require) {
                 }
             }
         });
-        _message.listen(customerList, 'CUSTOMER_LOGOUT', function(thisCom, msg) {
+        _message.listen(customerList, 'CUSTOMER_FINISH_DIALOGUE', function(thisCom, msg) {
             if (msg.flag === 'SUCCESS') {
                 var data = msg.data;
                 var customerItem = thisCom.getItemByKey(data.customerId);
                 customerItem.$this.removeClass('online');
                 var message = {
                     messageId: -1,
-                    message: '玩家已离开',
+                    message: '玩家已关闭对话',
                     customerId: data.customerId,
                     receptionId: data.receptionId,
                     from: 'c',
@@ -216,7 +216,10 @@ define(function(require) {
                     act: 'RECEPTION_LOGOUT'
                 };
                 _message.send(msg);
-                //
+            }
+        });
+        _message.listen(logoutButton, 'RECEPTION_LOGOUT', function(thisCom, msg) {
+            if (msg.flag === 'SUCCESS') {
                 _yy.clearSession();
                 thisModule.hide();
                 thisModule.remove();
@@ -263,26 +266,31 @@ define(function(require) {
             if (isOnline) {
                 var operateInfo = thisModule.findByKey('operate-info');
                 operateInfo.setLabel('正在与玩家通话中,不能退出.');
-                //阻止默认浏览器动作(W3C)
-                if (e && e.preventDefault)
+                if (e && e.preventDefault) {
+                    //阻止默认浏览器动作(W3C)
                     e.preventDefault();
-//IE中阻止函数器默认动作的方式
-                else
+                } else {
+                    //IE中阻止函数器默认动作的方式
                     window.event.returnValue = '正在与玩家通话中,不能退出.';
+                }
                 return '正在与玩家通话中,不能退出.';
             }
         };
         $(window).unload(function() {
-            var msg = {
-                act: 'RECEPTION_LOGOUT'
-            };
+            //强制关闭所有玩家的对话
+            var msg = {act: 'RECEPTION_FINISH_DIALOGUE'};
+            var customerItem;
+            for (var id in customerList.children) {
+                customerItem = customerList.children[id];
+                if (customerItem.$this.hasClass('online')) {
+                    //处于在线状态，强制结束对话
+                    msg.customerId = customerItem.key;
+                    _message.send(msg);
+                }
+            }
+            //客服登出
+            msg.act = 'RECEPTION_LOGOUT';
             _message.send(msg);
-            //
-            _yy.clearSession();
-            thisModule.hide();
-            thisModule.remove();
-            document.title = 'im-客服';
-            _module.loadModule('', 'reception-login');
         });
         //初始化客服公告
         var receptionBulletin = thisModule.findByKey('reception-bulletin');
