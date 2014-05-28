@@ -54,7 +54,7 @@ public class ReceptionLoginServiceImpl implements Service {
             messageContext.success();
             //记录登录状态
             //管理员不需要进入服务状态
-            if(!serviceEntity.getType().equals(ReceptionTypeEnum.ADMIN)){
+            if(serviceEntity.getType().equals(ReceptionTypeEnum.ADMIN.name()) == false){
                 this.receptionLocalService.offService(serviceEntity.getReceptionId(),"首次登陆");
             }
         } else {
