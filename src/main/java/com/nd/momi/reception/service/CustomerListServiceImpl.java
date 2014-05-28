@@ -51,6 +51,7 @@ public class CustomerListServiceImpl implements Service {
         List<DialogueEntity> dialogueEntityList = this.dialogueLocalService.inquireDialoguesByReceptionId(receptionId);
         List<CustomerEntity> customerEntityList = new ArrayList<CustomerEntity>();
         for(int i=0;i<dialogueEntityList.size();i++){
+            //根据customerId获取customer
             String customerId = dialogueEntityList.get(i).getCustomerId();
             CustomerEntity customerEntity = this.customerLocalService.inquireCustomerById(customerId);
             customerEntityList.add(customerEntity);

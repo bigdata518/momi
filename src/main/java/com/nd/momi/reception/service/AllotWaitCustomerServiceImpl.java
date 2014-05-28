@@ -98,7 +98,7 @@ public class AllotWaitCustomerServiceImpl implements Service {
                 serviceStateEntityList = receptionLocalService.inquireOnService(1, 100);
                 if (serviceStateEntityList.isEmpty() == false) {
                     //有在线客服
-                    //获取2倍与接收状态的客服数量的等待客户数量客户
+                    //获取5倍与接收状态的客服数量的等待客户数量客户
                     waitCustomerEntityList = customerLocalService.inquireCustomerWait(1, 500);
                     if (waitCustomerEntityList.isEmpty() == false) {
                         //有等待的客户
@@ -109,17 +109,21 @@ public class AllotWaitCustomerServiceImpl implements Service {
                         String customerSid;
                         String serviceSid;
                         String responseMessage;
+                        //按排队顺序为等待中的客户分配客服
                         for (int waitIndex = 0; waitIndex < waitCustomerEntityList.size(); waitIndex++) {
+                            //当全部客服都接收客户后进行新一轮的配对
                             if (serviceIndex >= serviceStateEntityList.size()) {
                                 serviceIndex = serviceIndex % serviceStateEntityList.size();
                             }
+                            //获取客户和客服
                             waitCustomerEntity = waitCustomerEntityList.get(waitIndex);
                             serviceStateEntity = serviceStateEntityList.get(0);
                             String receptionId = serviceStateEntity.getReceptionId();
                             String customerId = waitCustomerEntity.getCustomerId();
                             String gameId = waitCustomerEntity.getGameId();
-                            //插入对话
+                            //插入到对话对话表中
                             dialogueLocalService.insertDialogue(customerId,receptionId,gameId);
+                            //返回数据
                             resultMap.put("receptionId", receptionId);
                             resultMap.put("receptionName", serviceStateEntity.getReceptionName());
                             resultMap.put("customerId", customerId);
@@ -128,13 +132,14 @@ public class AllotWaitCustomerServiceImpl implements Service {
                             resultMap.put("waitOrder", Long.toString(waitCustomerEntity.getWaitOrder()));
                             this.messageContext.setMapData(resultMap);
                             responseMessage = this.messageContext.getResponseMessage(false);
+                            //消息推送给配对的客服和客户
                             customerSid = SessionUtils.createCustomerSessionId(waitCustomerEntity.getCustomerId());
                             serviceSid = SessionUtils.createReceptionSessionId(serviceStateEntity.getReceptionId());
                             this.messageContext.push(customerSid, responseMessage);
                             this.messageContext.push(serviceSid, responseMessage);
-                            //
+                            //在等待队列中删除已配对的客户
                             customerLocalService.deleteCustomerWait(waitCustomerEntity.getCustomerId());
-                            //
+                            //通知排在当前配对的客户之后的客户，更新等待人数
                             for (int index = waitIndex + 1; index < waitCustomerEntityList.size(); index++) {
                                 waitCustomerEntity = waitCustomerEntityList.get(index);
                                 customerSid = SessionUtils.createCustomerSessionId(waitCustomerEntity.getCustomerId());
