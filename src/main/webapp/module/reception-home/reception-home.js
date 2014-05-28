@@ -80,10 +80,9 @@ define(function(require) {
                 var closeButton = itemCom.findChildByKey(closeButtonId);
                 _event.bind(closeButton, 'click', function(thisCom) {
                     var customerItem = thisCom.parent;
-                    customerItem.remove();
-                    var messageItem = messageList.getItemByKey(customerItem.key);
-                    messageItem.remove();
-                    if (customerList.firstChild) {
+                    customerList.removeItem(customerItem.key);
+                    messageList.removeItem(customerItem.key);
+                    if (customerList.size() > 0) {
                         customerList.firstChild.$this.click();
                     }
                 });
@@ -175,36 +174,31 @@ define(function(require) {
                 }
             }
         });
-        //
-        var sendButton = thisModule.findByKey('send-button');
-        _event.bind(sendButton, 'click', function(thisCom) {
-            var msg = chatForm.getData();
-            msg.act = 'SEND_MESSAGE_FROM_RECEPTION';
-            _message.send(msg);
-            chatForm.setData('message', '');
-        });
-        //强制关闭与客户的对话
-        var forceFinishButton = thisModule.findByKey('force-finish-button');
-        _event.bind(forceFinishButton, 'click', function(thisCom) {
-            var data = chatForm.getData();
-            _message.send({
-                act: 'RECEPTION_FINISH_DIALOGUE',
-                customerId: data.customerId
-            });
-        });
-        _message.listen(forceFinishButton, 'RECEPTION_FINISH_DIALOGUE', function(thisCom, msg) {
-            if (msg.flag === 'SUCCESS') {
-                var data = msg.data;
-                var customerItem = customerList.getItemByKey(data.customerId);
-                customerItem.remove();
-                var messageItem = messageList.getItemByKey(data.customerId);
-                messageItem.remove();
-                if (customerList.firstChild) {
-                    customerList.firstChild.$this.click();
-                }
+        //状态按钮
+        //登录后默认状态为离开状态
+        thisModule.setContext({state: 'off'});
+        var stateButton = thisModule.findByKey('state-button');
+        _event.bind(stateButton, 'click', function(thisCom) {
+            var state = thisModule.getContext('state');
+            if (state === 'off') {
+                _message.send({act: 'RECEPTION_COMEBACK'});
+            } else {
+                _message.send({act: 'RECEPTION_LEAVE', offMessage: '临时有事'});
             }
         });
-        //
+        _message.listen(stateButton, 'RECEPTION_LEAVE', function(thisCom, msg) {
+            if (msg.flag === 'SUCCESS') {
+                thisModule.setContext({state: 'off'});
+                thisCom.setLabel('回  岗');
+            }
+        });
+        _message.listen(stateButton, 'RECEPTION_COMEBACK', function(thisCom, msg) {
+            if (msg.flag === 'SUCCESS') {
+                thisModule.setContext({state: 'on'});
+                thisCom.setLabel('离  开');
+            }
+        });
+        //退出按钮
         var logoutButton = thisModule.findByKey('logout-button');
         _event.bind(logoutButton, 'click', function(thisCom) {
             var isOnline = false;
@@ -228,6 +222,33 @@ define(function(require) {
                 thisModule.remove();
                 document.title = 'im-客服';
                 _module.loadModule('reception-login');
+            }
+        });
+        //
+        var sendButton = thisModule.findByKey('send-button');
+        _event.bind(sendButton, 'click', function(thisCom) {
+            var msg = chatForm.getData();
+            msg.act = 'SEND_MESSAGE_FROM_RECEPTION';
+            _message.send(msg);
+            chatForm.setData('message', '');
+        });
+        //强制关闭与客户的对话
+        var forceFinishButton = thisModule.findByKey('force-finish-button');
+        _event.bind(forceFinishButton, 'click', function(thisCom) {
+            var data = chatForm.getData();
+            _message.send({
+                act: 'RECEPTION_FINISH_DIALOGUE',
+                customerId: data.customerId
+            });
+        });
+        _message.listen(forceFinishButton, 'RECEPTION_FINISH_DIALOGUE', function(thisCom, msg) {
+            if (msg.flag === 'SUCCESS') {
+                var data = msg.data;
+                customerList.removeItem(data.customerId);
+                messageList.removeItem(data.customerId);
+                if (customerList.size() > 0) {
+                    customerList.firstChild.$this.click();
+                }
             }
         });
         //
@@ -271,8 +292,6 @@ define(function(require) {
             }
         });
         _message.send({act: 'RECEPTION_BULLETIN_DISPLAY'});
-        //页面初始化完成，切换客服为服务状态
-        _message.send({act: 'RECEPTION_COMEBACK'});
     };
     return self;
 });
