@@ -624,6 +624,7 @@ textarea {
     border-bottom: 1px solid #e2e2e2;
     color: #000000;
     background-color: #f8f8f9;
+    cursor: pointer;
 }
 
 .customer_list > .list_item:hover,  .customer_list > .list_item.selected{
