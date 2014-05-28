@@ -632,16 +632,34 @@ textarea {
 
 .customer_list .customer_state {
     position: absolute;
-    right: 3px;
+    right: 26px;
     top: 0;
     margin: 7px;
-    padding: 6px;
+    padding: 5px;
     border-radius: 3px;
     background-color: #D1D1D1;
 }
 
+.customer_close {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    height: 18px;
+    width: 18px;
+    background: url(images/icon.png) no-repeat -414px -108px;
+    cursor: pointer;
+}
+
+.customer_close:hover {
+    background-position: -414px -90px;
+}
+
 .online > .customer_state {
     background-color: green;
+}
+
+.online > .customer_close {
+    display: none;
 }
 
 .reception_bulletin {

@@ -38,20 +38,19 @@ public class CustomerEvaluateReceptionServiceJUnitTest extends AbstractMomiTest 
         //测试案例1,正常案例
         this.setCustomerSession("1158174740");
         Map<String, String> parameterMap = new HashMap<String, String>(6, 1);
-        parameterMap.put("customerId", "1158174740");
-        parameterMap.put("receptionId", "2258174740");
+        parameterMap.put("receptionId", "22");
         parameterMap.put("score", "1");
-//        parameterMap.put("receptionQuality", "质量一般");
-//        parameterMap.put("problemSolve", "问题已解决");
-//        parameterMap.put("suggestion", "希望态度能更好");
+        parameterMap.put("receptionQuality", "质量一般");
+        parameterMap.put("problemSolve", "问题已解决");
+        parameterMap.put("suggestion", "希望态度能更好");
         Response response = this.testHandler.execute(ActionNames.CUSTOMER_EVALUATE_RECEPTION, parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
+
         //测试案例2，score大于3为不合法数据
-        this.setCustomerSession("10");
+        this.setCustomerSession("1158174340");
         Map<String, String> parameterMap1 = new HashMap<String, String>(6, 1);
-        parameterMap1.put("customerId", "10");
-        parameterMap1.put("receptionId", "2258174740");
+        parameterMap1.put("receptionId", "23");
         parameterMap1.put("score", "10");
         parameterMap1.put("receptionQuality", "质量一般");
         parameterMap1.put("problemSolve", "问题已解决");
@@ -59,6 +58,40 @@ public class CustomerEvaluateReceptionServiceJUnitTest extends AbstractMomiTest 
         response = this.testHandler.execute(ActionNames.CUSTOMER_EVALUATE_RECEPTION, parameterMap1);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), "FAILURE_ERROR_DATA");
+
+        //测试案例3,score=1,receptionQuality,suggestion=null
+        this.setCustomerSession("1258174740");
+        Map<String, String> parameterMap2 = new HashMap<String, String>(6, 1);
+        parameterMap2.put("receptionId", "24");
+        parameterMap2.put("score", "1");
+        parameterMap2.put("suggestion", "希望态度能更好");
+        response = this.testHandler.execute(ActionNames.CUSTOMER_EVALUATE_RECEPTION, parameterMap2);
+        System.out.println(response.getResponseMessage());
+        Assert.assertEquals(response.getFlag(), "FAILURE_ERROR_DATA");
+
+        //测试案列4，score为负
+        this.setCustomerSession("1158374740");
+        Map<String, String> parameterMap3 = new HashMap<String, String>(6, 1);
+        parameterMap3.put("receptionId", "25");
+        parameterMap3.put("score", "-1");
+        parameterMap1.put("receptionQuality", "质量一般");
+        parameterMap1.put("problemSolve", "问题已解决");
+        parameterMap3.put("suggestion", "希望态度能更好");
+        response = this.testHandler.execute(ActionNames.CUSTOMER_EVALUATE_RECEPTION, parameterMap3);
+        System.out.println(response.getResponseMessage());
+        Assert.assertEquals(response.getFlag(), "FAILURE_ERROR_DATA");
+
+        //测试案例5,正常案例
+        this.setCustomerSession("1158164740");
+        Map<String, String> parameterMap4 = new HashMap<String, String>(6, 1);
+        parameterMap4.put("receptionId", "22");
+        parameterMap4.put("score", "1");
+        parameterMap4.put("receptionQuality", "质量一般");
+        parameterMap4.put("problemSolve", "问题已解决");
+        response = this.testHandler.execute(ActionNames.CUSTOMER_EVALUATE_RECEPTION, parameterMap4);
+        System.out.println(response.getResponseMessage());
+        Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
+
 
     }
 }

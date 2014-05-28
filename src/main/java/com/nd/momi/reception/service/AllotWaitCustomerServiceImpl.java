@@ -62,9 +62,9 @@ public class AllotWaitCustomerServiceImpl implements Service {
     public void execute(MessageContext messageContext) {
         synchronized (this) {
             if (this.state.equals("stop")) {
+                this.state = "running";
                 Task task = new AllotTaskImpl(messageContext);
                 this.taskExecutor.submit(task);
-                this.state = "running";
             }
         }
         Map<String, String> resultMap = new HashMap<String, String>(2, 1);
@@ -141,12 +141,14 @@ public class AllotWaitCustomerServiceImpl implements Service {
                                 this.messageContext.push(customerSid, responseMessage);
                             }
                             serviceIndex++;
-
                         }
+                    } else {
+                        state = "stop";
                     }
+                } else {
+                    state = "stop";
                 }
             }
-            state = "stop";
         }
     }
 }

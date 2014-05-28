@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author cy
+ * @author Alex
  *
  */
 
@@ -57,9 +57,9 @@ public class ReceptionEvaluateLocalServiceImpl implements
      */
     @Override
     public void insertReceptionEvaluate(final String customerId,
-        final String receptionId, final int score,
-        final String receptionQuality, final String problemSolve,
-        final String suggestion) {
+                                        final String receptionId, final int score,
+                                        final String receptionQuality, final String problemSolve,
+                                        final String suggestion) {
         final long evaluateId = this.nextEvaluateId();
         Map<String, String> entityMap = new HashMap<String, String>(8, 1);
         entityMap.put("evaluateId", String.valueOf(evaluateId));
@@ -86,12 +86,8 @@ public class ReceptionEvaluateLocalServiceImpl implements
      * @param suggestion the String
      * 意见反馈.
      *
-     * @return ReceptionEvaluateEntity
-     * 刚才插入的表.
-     * @see com.nd.momi.customer.localservice.ReceptionEvaluateLocalService#insertAndInquireReceptionEvaluate(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String, java.lang.String)
      */
 
-    @Override
     public void deleteReceptionEvaluate(String evaluateId) {
         this.receptionEvaluateEntityDao.delete(evaluateId);
     }

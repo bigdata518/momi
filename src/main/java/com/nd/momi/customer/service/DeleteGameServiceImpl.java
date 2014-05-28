@@ -48,6 +48,7 @@ public class DeleteGameServiceImpl implements Service {
         Map<String, String> parameterMap = messageContext.getParameterMap();
         String gameId = parameterMap.get("gameId");
         this.gameLocalService.deleteGame(gameId);
+        messageContext.setMapData(parameterMap);
         messageContext.success();
     }
 }

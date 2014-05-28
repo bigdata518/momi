@@ -36,9 +36,9 @@ public class GameLocalServiceImpl implements GameLocalService {
     @Override
     public void insertGame(String gameName) {
         final long gameId = this.nextGameId();
-        Map<String,String> entityMap = new HashMap<String, String>(2,1);
-        entityMap.put("gameId",Long.toString(gameId));
-        entityMap.put("gameName",gameName);
+        Map<String, String> entityMap = new HashMap<String, String>(2, 1);
+        entityMap.put("gameId", Long.toString(gameId));
+        entityMap.put("gameName", gameName);
         this.gameEntityDao.insert(entityMap);
     }
 
@@ -59,5 +59,7 @@ public class GameLocalServiceImpl implements GameLocalService {
     @Override
     public void init() {
 
+
         }
     }
+
