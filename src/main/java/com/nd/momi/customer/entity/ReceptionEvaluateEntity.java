@@ -78,7 +78,7 @@ public final class ReceptionEvaluateEntity extends Entity {
 
     @Override
     public Map<String, String> toMap() {
-        Map<String, String> map = new HashMap<String, String>(7, 1);
+        Map<String, String> map = new HashMap<String, String>(8, 1);
         map.put("evaluateId", this.evaluateId);
         map.put("receptionId", this.receptionId);
         map.put("customerId", this.customerId);

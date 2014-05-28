@@ -47,38 +47,24 @@ public class CustomerEvaluateReceptionServiceImpl implements Service {
         int score = Integer.parseInt(parameterMap.get("score"));
         String receptionQuality = parameterMap.get("receptionQuality");
         String problemSolve = parameterMap.get("problemSolve");
-        switch (score) {
-            case 1:
-                //score=1的case，receptionQuality,problemSolve其中一个为空，报异常
+        if (score == 1 || score == 2 || score == 3) {
+            if (score == 1) {
                 if (receptionQuality == null || problemSolve == null) {
                     messageContext.setFlag(ResponseFlags.FAILURE_ERROR_DATA);
-                } else {
-                    this.receptionEvaluateLocalService.insertReceptionEvaluate(
-                            customerId, receptionId, score, receptionQuality,
-                            problemSolve, suggestion);
-                    String serviceSid = SessionUtils
-                            .createReceptionSessionId(receptionId);
-                    messageContext.success();
-                    //
-                    String responseMessage = messageContext.getResponseMessage();
-                    messageContext.push(serviceSid, responseMessage);
+                    return;
                 }
-                break;
-            case 2:
-            case 3:
-                //score=2,3的case
-                this.receptionEvaluateLocalService.insertReceptionEvaluate(
-                        customerId, receptionId, score, receptionQuality,
-                        problemSolve, suggestion);
-                String serviceSid = SessionUtils
-                        .createReceptionSessionId(receptionId);
-                messageContext.success();
-                //
-                String responseMessage = messageContext.getResponseMessage();
-                messageContext.push(serviceSid, responseMessage);
-                break;
-            default:
-                messageContext.setFlag(ResponseFlags.FAILURE_ERROR_DATA);
+            }
+            this.receptionEvaluateLocalService.insertReceptionEvaluate(
+                    customerId, receptionId, score, receptionQuality,
+                    problemSolve, suggestion);
+            String serviceSid = SessionUtils
+                    .createReceptionSessionId(receptionId);
+            messageContext.success();
+            //
+            String responseMessage = messageContext.getResponseMessage();
+            messageContext.push(serviceSid, responseMessage);
+        } else {
+            messageContext.setFlag(ResponseFlags.FAILURE_ERROR_DATA);
         }
     }
 }

@@ -35,9 +35,9 @@ public class InsertGameJUnitTest extends AbstractMomiTest {
 
     @Test
     public void test() {
-        this.setCustomerSession("1");
+        this.setCustomerSession("6");
         Map<String, String> parameterMap = new HashMap<String, String>(2, 1);
-        parameterMap.put("gameName", "战");
+        parameterMap.put("gameName", "其他");
         Response response = this.testHandler.execute(ActionNames.INSERT_GAME,parameterMap);
         System.out.println(response.getResponseMessage());
         Assert.assertEquals(response.getFlag(), DefaultResponseFlags.SUCCESS);
