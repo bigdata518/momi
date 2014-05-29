@@ -27,7 +27,7 @@ import java.util.Map;
         @RequestConfig(name = "score", typeEnum = TypeEnum.INT, desc = "星星得分"),
         @RequestConfig(name = "receptionQuality", typeEnum = TypeEnum.CHAR_32, must = false, desc = "客服服务"),
         @RequestConfig(name = "problemSolve", typeEnum = TypeEnum.CHAR_32, must = false, desc = "问题处理"),
-        @RequestConfig(name = "suggestion", typeEnum = TypeEnum.CHAR_32, must = false, desc = "意见反馈") },
+        @RequestConfig(name = "suggestion", typeEnum = TypeEnum.CHAR_255, must = false, desc = "意见反馈") },
 
         validateSession = true, response = false, group = ActionGroupNames.CUSTOMER, description = "玩家结束对话后，对刚才的客服做评价")
 public class CustomerEvaluateReceptionServiceImpl implements Service {
