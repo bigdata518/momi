@@ -57,12 +57,8 @@ public class CustomerEvaluateReceptionServiceImpl implements Service {
             this.receptionEvaluateLocalService.insertReceptionEvaluate(
                     customerId, receptionId, score, receptionQuality,
                     problemSolve, suggestion);
-            String serviceSid = SessionUtils
-                    .createReceptionSessionId(receptionId);
             messageContext.success();
             //
-            String responseMessage = messageContext.getResponseMessage();
-            messageContext.push(serviceSid, responseMessage);
         } else {
             messageContext.setFlag(ResponseFlags.FAILURE_ERROR_DATA);
         }
