@@ -12,6 +12,7 @@ define(function(require) {
         var waitPanel = thisModule.findByKey('wait-panel');
         var chatPanel = thisModule.findByKey('chat-panel');
         var customerName = _yy.getSession('customerName');
+        var chatForm = thisModule.findByKey('chat-form');
         document.title = customerName;
         var chatMessageList = thisModule.findByKey('chat-message-list');
         chatMessageList.init({
@@ -85,8 +86,7 @@ define(function(require) {
                 if (customerId === data.customerId) {
                     waitPanel.hide();
                     chatPanel.show();
-                    var charForm = thisModule.findByKey('chat-form');
-                    charForm.setData('receptionId', data.receptionId);
+                    chatForm.setData('receptionId', data.receptionId);
                     //添加欢迎消息
                     var message = {
                         messageId: 1,
@@ -119,6 +119,7 @@ define(function(require) {
                 var data = msg.data;
                 thisCom.addItemData(data);
                 thisCom.scrollBottom();
+                chatForm.setData('message', '');
             }
         });
         //
@@ -132,43 +133,37 @@ define(function(require) {
         //
         var sendButton = thisModule.findByKey('send-button');
         _event.bind(sendButton, 'click', function(thisCom) {
-            var charForm = thisModule.findByKey('chat-form');
-            var msg = charForm.getData();
+            var msg = chatForm.getData();
             msg.act = 'SEND_MESSAGE_FROM_CUSTOMER';
             _message.send(msg);
-            charForm.setData('message', '');
         });
-        //
+        //结束对话
         var finishButton = thisModule.findByKey('finish-button');
         _event.bind(finishButton, 'click', function(thisCom) {
             var charForm = thisModule.findByKey('chat-form');
             var msg = charForm.getData();
-            msg.act = 'CUSTOMER_LOGOUT';
-            var waitOrder = thisModule.getContext('waitOrder');
-            if (waitOrder) {
-                msg.waitOrder = waitOrder;
-            }
+            msg.act = 'CUSTOMER_FINISH_DIALOGUE';
             _message.send(msg);
-            //
-            _yy.clearSession();
-            thisModule.hide();
-            thisModule.remove();
-            document.title = 'im-玩家';
-            _module.loadModule('customer-login');
         });
-        //
-        $(window).unload(function() {
-            var charForm = thisModule.findByKey('chat-form');
-            var msg = charForm.getData();
-            var waitOrder = thisModule.getContext('waitOrder');
-            if (waitOrder) {
-                msg.waitOrder = waitOrder;
+        _message.listen(thisModule, 'CUSTOMER_FINISH_DIALOGUE', function(thisCom, msg) {
+            if (msg.flag === 'SUCCESS') {
+                var msg = chatForm.getData();
+                msg.act = 'CUSTOMER_LOGOUT';
+                msg.waitOrder = -1;
+                _message.send(msg);
             }
-            msg.act = 'CUSTOMER_LOGOUT';
-            _message.send(msg);
         });
         //客服强制关闭聊天消息
         _message.listen(thisModule, 'RECEPTION_FINISH_DIALOGUE', function(thisCom, msg) {
+            if (msg.flag === 'SUCCESS') {
+                var msg = chatForm.getData();
+                msg.act = 'CUSTOMER_LOGOUT';
+                msg.waitOrder = -1;
+                _message.send(msg);
+            }
+        });
+        //客户退出消息
+        _message.listen(thisModule, 'CUSTOMER_LOGOUT', function(thisCom, msg) {
             if (msg.flag === 'SUCCESS') {
                 _yy.clearSession();
                 thisModule.hide();
@@ -176,6 +171,22 @@ define(function(require) {
                 document.title = 'im-玩家';
                 _module.loadModule('customer-login');
             }
+        });
+        //关闭浏览器事件
+        $(window).unload(function() {
+            var msg = chatForm.getData();
+            if (msg.receptionId != '-1') {
+                //已分配客服，正常结束对话
+                msg.act = 'CUSTOMER_FINISH_DIALOGUE';
+                _message.send(msg);
+            }
+            //玩家正常退出
+            var waitOrder = thisModule.getContext('waitOrder');
+            if (waitOrder) {
+                msg.waitOrder = waitOrder;
+            }
+            msg.act = 'CUSTOMER_LOGOUT';
+            _message.send(msg);
         });
         //初始化客户公告
         var customerBulletin = thisModule.findByKey('customer-bulletin');
