@@ -16,4 +16,6 @@ public class ResponseFlags {
     public final static String FAILURE_NO_GAME = "FAILURE_NO_GAME";
     //提交的数据异常
     public final static String FAILURE_ERROR_DATA = "FAILURE_ERROR_DATA";
+    //游戏已满
+    public final static String FAILURE_GAME_LIST_FULL= "FAILURE_GAME_LIST_FULL";
 }

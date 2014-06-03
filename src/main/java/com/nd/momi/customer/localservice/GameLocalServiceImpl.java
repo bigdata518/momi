@@ -52,7 +52,7 @@ public class GameLocalServiceImpl implements GameLocalService {
     public List<GameEntity> getGames() {
         InquirePageContext inquirePageContext = new InquirePageContext();
         inquirePageContext.setPageIndex(1);
-        inquirePageContext.setPageSize(10);
+        inquirePageContext.setPageSize(30);
         return this.gameEntityDao.inquire(inquirePageContext);
     }
 

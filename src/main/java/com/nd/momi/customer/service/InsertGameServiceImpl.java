@@ -40,12 +40,17 @@ public class InsertGameServiceImpl implements Service {
 
     @Override
     public void execute(MessageContext messageContext) {
-
-        Map<String,String> parameterMap = messageContext.getParameterMap();
-        String gameName = parameterMap.get("gameName");
-        this.gameLocalService.insertGame(gameName);
-        messageContext.setMapData(parameterMap);
-        messageContext.success();
+        List<GameEntity> gameEntity = this.gameLocalService.getGames();
+        int gameEntityCount = gameEntity.size();
+        if (gameEntityCount < 30) {
+            Map<String, String> parameterMap = messageContext.getParameterMap();
+            String gameName = parameterMap.get("gameName");
+            this.gameLocalService.insertGame(gameName);
+            messageContext.setMapData(parameterMap);
+            messageContext.success();
+        } else {
+            messageContext.setFlag(ResponseFlags.FAILURE_GAME_LIST_FULL);
         }
     }
+}
 
